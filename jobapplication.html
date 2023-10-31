@@ -1,102 +1,216 @@
 <div>
-    <div class="text_block">
-      <h2>1. Choose a job to apply for</h2>
-      <div>Search job boards and company sites. Narrow down based on interests, skills, and qualifications.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">What are 3 good job opportunities to apply for given my background: <textarea class="user_input"></textarea>
-      </div>
-      <button class="promptNext" id="p1">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-    <div class="text_block">
-      <h2>2. Research the company</h2>
-      <div>Review the company website, news, mission, culture, LinkedIn, Glassdoor.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">Provide a summary of what I need to know about this company: <textarea class="user_input">company</textarea>
-      </div>
-      <button class="promptNext" id="p2">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-    <div class="text_block">
-      <h2>3. Analyze the job description</h2>
-      <div>Identify key responsibilities, qualifications, and skills sought.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">List the key requirements and qualifications for this job: <textarea class="user_input">job description</textarea>
-      </div>
-      <button class="promptNext" id="p3">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-    <div class="text_block">
-      <h2>4. Develop a resume summary</h2>
-      <div>Tailor your resume profile/objective to match the position.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">Suggest a resume summary for this position: <textarea class="user_input">job details</textarea>
-      </div>
-      <button class="promptNext" id="p4">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-    <div class="text_block">
-      <h2>5. Update your resume</h2>
-      <div>Modify experience and skills on resume to fit the role.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">Recommend updates to this resume: <textarea class="user_input">resume</textarea>
-      </div>
-      <button class="promptNext" id="p5">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-    <div class="text_block">
-      <h2>6. Write a cover letter</h2>
-      <div>Highlight your fit and interest for this specific position.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">Draft a cover letter for this job application: <textarea class="user_input">job details</textarea>
-      </div>
-      <button class="promptNext" id="p6">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-    <div class="text_block">
-      <h2>7. Complete the application</h2>
-      <div>Follow instructions and submit required documents.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">Provide tips for successfully completing this job application: <textarea class="user_input">job details</textarea>
-      </div>
-      <button class="promptNext" id="p7">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-    <div class="text_block">
-      <h2>8. Follow up after applying</h2>
-      <div>Send thank you note. Check in after given time period.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">When and how should I follow up on this job application?: <textarea class="user_input">job details</textarea>
-      </div>
-      <button class="promptNext" id="p8">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-    <div class="text_block">
-      <h2>Custom Prompt</h2>
-      <div>Ask any other job application questions.</div>
-    </div>
-    <br>
-    <div>
-      <div class="prompt_block">
-        <textarea class="user_input">Custom prompt</textarea>
-      </div>
-      <button class="promptNext" id="pc">&gt;</button>
-      <div class="response_block"></div>
-    </div>
-  </div>
+
+<h1>Guide to Updating Your Resume and Advancing Your Career</h1>
+
+<h3>References: <a href="https://www.indeed.com/career-advice/resumes-cover-letters/how-to-update-your-resume" target="_blank">Indeed</a>, <a href="https://www.thebalancecareers.com/list-of-career-development-skills-and-values-2062364" target="_blank">The Balance Careers</a></h3>
+
+<div class="text_block">
+
+<h2>Update Your Resume</h2>
+
+<p>Follow these steps to update and polish your resume:</p>
+
+</div>
+
+<div class="code_block"> 
+
+<div class="prompt_block">
+
+What are 3 things I should update on my resume? 
+
+<textarea class="user_input" placeholder="Enter your current job titles and skills"></textarea>
+
+</div>
+
+<button class="promptNext" id="p1">&gt;</button>
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block"> 
+
+Please update my contact information:
+
+<textarea class="user_input" placeholder="Enter your contact info"></textarea>
+
+</div>
+
+<button class="promptNext" id="p2">&gt;</button>
+
+<div class="response_block"></div>
+
+</div> 
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+What job experiences should I add? 
+
+<textarea class="user_input" placeholder="Enter your new job titles and projects"></textarea>
+
+</div>  
+
+<button class="promptNext" id="p3">&gt;</button>
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+What content should I remove from my resume?
+
+<textarea class="user_input" placeholder="Enter irrelevant jobs or skills"></textarea>
+
+</div>
+
+<button class="promptNext" id="p4">&gt;</button>
+
+<div class="response_block"></div>  
+
+</div>
+
+<div class="text_block">
+
+<h2>Advance Your Career</h2>
+
+<p>Use these prompts to get suggestions on growing your career:</p>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+Based on my background, what are 3 relevant job titles I should search for? 
+
+<textarea class="user_input" placeholder="Enter your skills and experience"></textarea>
+
+</div>
+
+<button class="promptNext" id="p5">&gt;</button>
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+What certifications would help me advance in my career?
+
+<textarea class="user_input" placeholder="Enter your current job and desired career path"></textarea>
+
+</div>
+
+<button class="promptNext" id="p6">&gt;</button>  
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+What companies should I consider applying to with my background? 
+
+<textarea class="user_input" placeholder="Enter your skills, experience and desired job type"></textarea>
+
+</div>
+
+<button class="promptNext" id="p7">&gt;</button>
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+What is your recommendation for next steps to advance my career?
+
+<textarea class="user_input" placeholder="Enter your current job and experience"></textarea>
+  
+</div>
+
+<button class="promptNext" id="p8">&gt;</button>
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+Please review my resume and cover letter:
+
+<textarea class="user_input" placeholder="Paste resume and cover letter"></textarea>
+
+</div>
+
+<button class="promptNext" id="p9">&gt;</button>
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">  
+
+Help me prepare for this upcoming job interview:
+
+<textarea class="user_input" placeholder="Enter role, company, interview format"></textarea>
+
+</div>
+
+<button class="promptNext" id="p10">&gt;</button> 
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+What salary should I ask for during negotiations for this job offer?
+
+<textarea class="user_input" placeholder="Enter role, location, your experience"></textarea>
+
+</div>
+
+<button class="promptNext" id="p11">&gt;</button>
+
+<div class="response_block"></div>
+
+</div>
+
+<div class="code_block">
+
+<div class="prompt_block">
+
+Help me network on LinkedIn to reach out to people at this company:
+
+<textarea class="user_input" placeholder="Enter company name"></textarea>
+
+</div> 
+
+<button class="promptNext" id="p12">&gt;</button>
+
+<div class="response_block"></div>
+
+</div>
+
+</div>
+
