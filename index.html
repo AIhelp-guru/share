@@ -1,5 +1,345 @@
 <html>
+    <style>
+        a{
+          
+          text-decoration: none;
+        }
+        #container{
+          margin-top:25px;
+          width:95%;
+          min-height:300px;
+          height:300px;
+          overflow:auto;
+          background-color:white;
+          padding-top:50px;
+        }
+        #main{
+          width:80%;
+          overflow:auto;
+          background:white;
+          color:black !important;
+          padding:10px;
+          margin-top:-40px;
+          font-size:18px;font-family: Arial, Helvetica, sans-serif;
+        }
+        img{
+          max-width:80%;
+          max-height:200px;
+        }
+        #plainText{
+          display:none;
+        }
+        #customPrompt{
+          display: none;
+          background-color: #2457a7;
+          color:white;
+          font-size:14px;
+          padding:10px;
+          width:100%;
+        }
+        #pageTitle{
+          color:gray;
+          font-size: 20px;
+          padding:10px;
+          margin-top:50px;
+          display: none;
+        }
+        #toolbar{
+          display: inline-block;
+          width: 100%;
+          background: #2457a7;
+          padding: 5px;
+          position:fixed;
+          top: 0px;
+          left: 0px;
+          height: 20px;
+          overflow: clip;
+          max-height:600px;
+          border: 2px outset #132c56;
+        }
+        #toolbar:hover{
+          height:fit-content;
+        }
+        #prompts{
+          padding:10px;
+          border-radius:10px;
+          display: none;
+        }
+        #conversations{
+          display:inline-block;
+          color:white;
+        }
+        .AIresponse>div>img.logo{
+          display: none;
+        }
+        .AIresponse{
+          background: white ;
+          color:black;
+          border-radius: 10px;
+          padding: 10px;
+          width:95%;
+          margin-bottom:10px;
+        }
+        .userPrompt{
+          background: #222;
+          border-radius: 10px;
+          padding: 10px;
+          color:wheat;
+          min-width: 500px;
+  
+        }
+        #prompts{
+          display: inline-block;
+        }
+        .prompt{
+          color:white;
+          background:#aaa;
+          cursor: pointer;
+          padding:10px;
+          display: inline-block;
+          width:fit-content;
+          border-radius: 5px;
+          border:1px solid white;
+          margin:2px;
+        }
+        .prompt:hover{
+          background:#222;
+        }
+        #promptDropdown{
+          max-height:100px;
+          overflow:auto;
+          display: none;
+        }
+        #customCheckDiv{
+          display: none;
+          color:white;
+        }
+        #exportModes{
+          display: inline-block;;
+        }
+        .prompt_select{
+          width:200px;
+          /*background: #2457a7;*/
+          color: white;
+          border-radius:10px;
+          padding:10px;
+          border: 2px outset #1c4381;
+        }
+        #workflows{
+          width:20%;
+          background: #1b4381;
+          color: white;
+          font-size:20px;
+          padding:10px;
+          margin:2px;
+          margin-left:2px;
+          border:none;
+          border-bottom: 1px solid white;
+        }
+        #pdfFile{
+          color:white;
+          display: none;
+        }
+        .export{
+          background-color: #b8c6de;
+          color: #2456a5;
+          padding: 4px;
+          border-radius: 10px;
+        }
+        user_prompt{
+          border:1px solid gray;
+          padding:15px;
+          display: block;
+          background-color: #eee;
+          width:95%;
+          font-size:large;
+          font-family: sans-serif;
+        }
+        #promptBox{
+          
+          left:0px;
+          bottom:0px;
+          width:50%;
+          height:30px;
+          border-radius:10px;
+          background:#e8e8e8;
+          font-size:20px;
+          padding:5px;
+          border-top:2px inset black;
+          display: none;
+        }
+        .AIhighlight{
+          background-color: yellow;
+        }
+        .extract{
+          display: inline-block;
+          background: aliceblue;
+          width:90%;
+          height:200px;
+          overflow:auto;
+          padding:5px;
+          border-bottom:1px solid black;
+        }
+        
+        .prompt_block{
+          border:1px solid gray;
+          padding:5px;
+        }
+        .response{
+          max-height:200px;
+          margin:30px;
+          overflow: auto;
+          width:95%;
+          background-color: white;
+        }
+        .prompt_block{
+          border: none;
+          padding: 15px;
+          margin-left: 50px;
+          display: block;
+          background-color: #eee;
+          width: 90%;
+          font-size: large;
+          font-family: sans-serif;
+          line-height: 2em;
+          max-height: 300px;
+          overflow: auto;
+        }
+        .text_block{
+          border:none;
+          padding:15px;
+          display: block;
+          width:95%;
+          font-size:large;
+          font-family: sans-serif;
+          
+        }
+        text{
+          border:none;
+          padding:15px;
+          display: block;
+          width:95%;
+          font-size:large;
+          font-family: sans-serif;
+          
+        }
+        header{
+          background:hsl(300, 21%, 42%);
+          color:white;
+          width:100%;
+          padding:30px;
+          margin-left: -20px;
+          margin-top: -25px;
+          margin-bottom: 20px;
+          font-size:x-large;
+          font-family: sans-serif;
+        }
+        .code_block{
+          background:#f7f7f7;
+          margin-bottom:5px;
+        }
+        #scriptContainer{
+          padding:10px;
+          padding-bottom: 100px;
+          padding-top: 50px;
+          width:95%;
+          font-size:large;
+          font-family: sans-serif;
+          line-height: 1.5em;
+        }
+        .user_input{
+          background: #bae8ff;
+          padding: 10px;
+          margin: 10px;
+          border-radius: 5px;
+          border-left: 3px solid gray;
+          border-right: 3px solid gray;
+          font-size:large;
+          font-family: sans-serif;
+          vertical-align: middle;
+          height:20px;
+        }
+        .workflow{
+          width:100px;
+          height:100px;
+          padding:10px;
+          border-radius: 10px;
+          margin:10px;
+          background:rgb(214, 220, 252);
+          border:2px outset gray;
+          cursor:pointer;
+          font-weight: bold;
+          vertical-align: top;
+        }
+        .btn_icon{
+          height:30px;
+          width:30px;
+          
+        }
+        .text_extract_title{
+          cursor:pointer;
+        }
+        .promptNext{
+          padding: 5px;
+          margin-top: -50px;
+          margin-left:20px;
+          border-radius: 20px;
+          display: flex;
+          border: none;
+          color: white;
+          background: #333;
+          padding-left: 9px;
+          padding-right: 9px;
+          cursor:pointer;
+        }
+        .prompt_text{
+          display: none;
+        }
+        summary{
+          cursor: pointer;
+        }
+        .ui-menu {
+    background-color: white;
+    border: 1px solid gray;
+    color:gray;
+    font-size: 16px;
+    font-family: sans-serif;
+    padding:5px;
+    min-width:50px;
+    max-width:200px;
+  }
+  .ui-menu-item{
+    list-style-type: none;
+    padding:5px;
+    cursor:pointer;
+    height:15px;
+    overflow:clip;
+  
+  }
+  .ui-helper-hidden-accessible{
+    display: none;
+  }
+      </style>
+      
     <body>
-        Hello World!!
+        <h1>AI Mentor</h1>
+      <h2>Accomplish - Faster, Better and Easier!!</h2>
+      <span>AI Mentor is an intelligent companion that works with you to accomplish your goals. 
+        <br>Start here - <h3>AI enabled guides : </h3></span>
+        <br>
+      <div style="margin-left:50px;">
+        <button class="workflow" style="background:hsl(352deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/research.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> Research and analyze</div></button>
+        <button class="workflow" style="background:hsl(300deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/writing.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> Write a blog post</div></button>
+        <button class="workflow" style="background:hsl(250deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/journalism.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> Write a news article</div></button>
+        <button class="workflow" style="background:hsl(200deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/brainstorm.html"><img src="https://static.thenounproject.com/png/49136-200.png" class="btn_icon" /><div> Brainstorm</div></button>
+        <button class="workflow" style="background:hsl(150deg , 86%, 91%)" value="https://aihelp-guru.github.io/workflows/businessplan.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> Business plan</div></button>
+        <button class="workflow" style="background:hsl(100deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/jobapplication.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> Job Application</div></button>
+        <button class="workflow" style="background:hsl(50deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/QnA.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> Learn through questions</div></button>
+        <button class="workflow" style="background:hsl(0deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/chat.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> Chat with the page</div></button>
+        <button class="workflow" style="background:hsl(0deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/linkedin.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> LinkedIn Companion</div></button>
+        <button class="workflow" style="background:hsl(0deg, 86%, 91%)" value="https://aihelp-guru.github.io/workflows/recipe.html"><img src="https://cdn-icons-png.flaticon.com/512/167/167130.png" class="btn_icon" /><div> Cook a Meal</div></button>
+        
+        <br><div>And many more coming soon... <br>These are designed to keep you in the center not the AI !</div>
+      </div>
     </body>
 </html>
