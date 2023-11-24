@@ -426,11 +426,11 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
       $(document).ready(function() {
-        var currentItem = 0;
+        var currentItem = Math.random()*parseInt( $("#banner").find("li").length);
         
         function scrollNext() {
-          $("#banner").find("li").slideUp();
-          $("#banner").find("li").eq(currentItem).slideDown(2000);
+          $("#banner").find("li").fadeOut();
+          $("#banner").find("li").eq(currentItem).fadeIn(2000);
           setTimeout(function(){
             currentItem++
             if(currentItem === $("#banner").find("li").length){
