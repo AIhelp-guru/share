@@ -429,7 +429,7 @@
         var currentItem = Math.floor(Math.random() * $('#banner').find('li').length);
         
         function scrollNext() {
-          $("#banner").find("li").slideUp();
+          $("#banner").find("li").fadeTo(1000, 0.4);
           $("#banner").find("li").eq(currentItem).fadeIn(2000);
           setTimeout(function(){
             currentItem++
