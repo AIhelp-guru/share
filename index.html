@@ -426,7 +426,7 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
       $(document).ready(function() {
-        var currentItem = Math.random()*parseInt( $("#banner").find("li").length);
+        var currentItem = Math.floor(Math.random() * $('#banner').find('li').length);
         
         function scrollNext() {
           $("#banner").find("li").fadeOut();
