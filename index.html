@@ -430,8 +430,11 @@
           $("#banner").find("li").eq(currentItem).slideDown();
           setTimeout(function(){
             currentItem++
+            if(currentItem === $("#banner").find("li").length){
+              currentItem = 0;
+            }
            scrollNext();
-          },1000)
+          },2000)
           }
         
 
