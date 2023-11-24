@@ -427,14 +427,14 @@
         
         function scrollNext() {
           $("#banner").find("li").hide();
-          $("#banner").find("li").eq(currentItem).slideDown();
+          $("#banner").find("li").eq(currentItem).slideDown('slow');
           setTimeout(function(){
             currentItem++
             if(currentItem === $("#banner").find("li").length){
               currentItem = 0;
             }
            scrollNext();
-          },2000)
+          },3000)
           }
         
 
