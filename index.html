@@ -333,7 +333,42 @@
     padding-top:5%;
   }
       </style>
-      
+      <style>
+        #banner {
+          width: 100%;
+          height: 100px;
+          overflow: hidden;
+          background-color: #ccc;
+        }
+        
+        #banner ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          width: 1000px;
+          position: relative;
+          animation: scroll 20s linear infinite;
+        }
+        
+        #banner ul li {
+          display: inline-block;
+          width: 200px;
+          height: 100px;
+          background-color: #f00;
+          text-align: center;
+          line-height: 100px;
+          color: #fff;
+        }
+        
+        @keyframes scroll {
+          0% {
+            left: 0px;
+          }
+          100% {
+            left: -800px;
+          }
+        }
+        </style>
     <body>
         <header><img id="home_icon" src="aihelp_128.png" style="
           vertical-align: middle;
@@ -346,7 +381,17 @@
       <H3>AI Mentor is an intelligent companion that works with you to accomplish your goals. </H3>
         <div>We all have important goals and projects we want to accomplish - a research paper to write, a business proposal to craft, a new skill to master. But we often struggle to structure our efforts, find direction, and stay motivated when tackling complex, multi-step workflows.
 <p>
+
             That's why we built the AI Mentor chrome extension - your personal AI-powered productivity assistant. With AI Mentor, you'll have an intelligent guide by your side that works with you to complete any workflow smoothly and efficiently.
+            <div id="banner">
+              <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ul>
+            </div> 
         </p>
         <hr>
        
