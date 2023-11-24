@@ -237,7 +237,7 @@
           color:white;
           width:100%;
           padding:10px;
-         
+          height:100px;
           margin-bottom: 20px;
           font-size:x-large;
           font-family: sans-serif;
@@ -384,7 +384,7 @@
         <li>AI enabled guide to get a daily digest of news for you</li>
       
       </span> </header>
-        
+      <p></p>  
       <center><h2>Accomplish - Faster, Better and Easier!!</h2></center>
       <H3>AI Mentor is an intelligent companion that works with you to accomplish your goals. </H3>
         <div>We all have important goals and projects we want to accomplish - a research paper to write, a business proposal to craft, a new skill to master. But we often struggle to structure our efforts, find direction, and stay motivated when tackling complex, multi-step workflows.
@@ -429,7 +429,7 @@
         var currentItem = 0;
         
         function scrollNext() {
-          $("#banner").find("li").hide();
+          $("#banner").find("li").slideUp();
           $("#banner").find("li").eq(currentItem).slideDown(2000);
           setTimeout(function(){
             currentItem++
