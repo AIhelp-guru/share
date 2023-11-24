@@ -429,7 +429,7 @@
         
         function scrollNext() {
           $("#banner").find("li").hide();
-          $("#banner").find("li").eq(currentItem).slideDown('slow');
+          $("#banner").find("li").eq(currentItem).slideDown(2000);
           setTimeout(function(){
             currentItem++
             if(currentItem === $("#banner").find("li").length){
