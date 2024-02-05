@@ -7,6 +7,7 @@
 <p><br><hr></p>
 <h2>Check your answers</h2>
 <text>Enter your answers here and get evaluated</text>
+<button onClick="getquestions()">GetQs</button>
 <code><li>Question 1 {{Type your answer}}</li>
   <li>Question 2 {{Type your answer}}</li>
   <li>Question 3 {{Type your answer}}</li>
@@ -21,3 +22,15 @@
   
   Check my answers for the above quiz and tell me why my answers are correct or wrong </code>
 <p><br><hr></p>
+<script>
+  
+  function getquestions(){
+  var l = document.getElementsByClassName("response-container-content")[0].getElementsByTagName("ol")[0].getElementsByTagName("li")
+  p = document.getElementsByClassName("prompt_block")[1];
+  p.innerHTML = "";
+  for(i=0;i<l.length;i++){
+    p.innerHTML += "<li>"+l[i].innerHTML +"</li">;
+  }
+  
+  }
+</script>
