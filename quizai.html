@@ -1,0 +1,40 @@
+function askai(prompt){
+        
+      //prompt = prompt.substring(0,3000);
+      //url ="https://artatfalls.pythonanywhere.com/askai";
+       // url = "https://api.aihelp.guru/askai";
+        url = "https://askai-ndmd3ghqma-uc.a.run.app/";//?q="+prompt;
+      //$("#q").val(prompt);
+    
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify({ q: prompt }),
+        contentType: "application/json",
+          success: function(data){
+           // const regex = /(\d+)\./g;
+          //data = data.replace(regex, "\n$1.");
+
+          if(target_for_response !== ""){
+            if($("#"+target_for_response).parent().find(".chatgpt_response").length === 0){
+              $("#"+target_for_response).parent().find(".response_block").append(`<div class="response chatgpt_response">${"<details><summary><b>ChatGPT's response:</b></summary>" +data+ "</details>"}</div>`);
+               
+            }else{
+              $("#"+target_for_response).parent().find(".chatgpt_response").html(`<div class="response chatgpt_response">${"<details><summary><b>ChatGPT's response:</b></summary>" +data+ "</details>"}</div>`);
+              
+            }
+           
+          }else{
+            $(".AIresponse").last().append(data );
+            $(".AIresponse").find("img").hide();
+          
+          }
+            
+          },
+          error: function(error){
+            console.log(error);
+          }
+        });
+    // data: $('form').serialize(),
+  
+    }
