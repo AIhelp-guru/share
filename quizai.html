@@ -9,37 +9,39 @@
                 <div id="results"></div>
         <script>
                 
-function askai(){
-        prompt = $("textarea").eq(0).val();
-     
-        url = "https://askai-ndmd3ghqma-uc.a.run.app/";
-     
-    
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: JSON.stringify({ q: prompt }),
-        contentType: "application/json",
-          success: function(data){
-           // const regex = /(\d+)\./g;
-          //data = data.replace(regex, "\n$1.");
+function askai() {
+  // Get the prompt from the first textarea element
+  const prompt = document.querySelector("textarea").value;
 
-          if(target_for_response !== ""){
-            
-              $("#results").html(`<div class="response chatgpt_response">${"<details><summary><b>ChatGPT's response:</b></summary>" +data+ "</details>"}</div>`);
-               
-            }
-           
-          
-            
-          },
-          error: function(error){
-            console.log(error);
-          }
-        });
-    // data: $('form').serialize(),
-  
-    }
+  // Set the URL for the API
+  const url = "https://askai-ndmd3ghqma-uc.a.run.app/";
+
+  // Create the fetch request with POST method and JSON data
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ q: prompt }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Find the target element for displaying the response
+      const targetElement = document.getElementById("results");
+
+      if (targetElement) {
+        // Format the response with details tag for summary
+        const formattedResponse = `<details><summary><b>ChatGPT's response:</b></summary>${data}</details>`;
+
+        // Display the formatted response in the target element
+        targetElement.innerHTML = `<div class="response chatgpt_response">${formattedResponse}</div>`;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
                 </script>
         </body>
 </html>
