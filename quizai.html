@@ -1,10 +1,16 @@
 <html>
+        <head>
+                <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+                
+        </head>
         <body>
                 <textarea id="prompt"></textarea>
+                <button onclick="askai()">Ask</button>
                 <div id="results"></div>
         <script>
-function askai(prompt){
-        
+                
+function askai(){
+        prompt = $("textarea").eq(0).val();
      
         url = "https://askai-ndmd3ghqma-uc.a.run.app/";
      
@@ -19,19 +25,12 @@ function askai(prompt){
           //data = data.replace(regex, "\n$1.");
 
           if(target_for_response !== ""){
-            if($("#"+target_for_response).parent().find(".chatgpt_response").length === 0){
-              $("#"+target_for_response).parent().find(".response_block").append(`<div class="response chatgpt_response">${"<details><summary><b>ChatGPT's response:</b></summary>" +data+ "</details>"}</div>`);
+            
+              $("#results").html(`<div class="response chatgpt_response">${"<details><summary><b>ChatGPT's response:</b></summary>" +data+ "</details>"}</div>`);
                
-            }else{
-              $("#"+target_for_response).parent().find(".chatgpt_response").html(`<div class="response chatgpt_response">${"<details><summary><b>ChatGPT's response:</b></summary>" +data+ "</details>"}</div>`);
-              
             }
            
-          }else{
-            $(".AIresponse").last().append(data );
-            $(".AIresponse").find("img").hide();
           
-          }
             
           },
           error: function(error){
