@@ -1,10 +1,13 @@
+<html>
+        <body>
+                <textarea id="prompt"></textarea>
+                <div id="results"></div>
+        <script>
 function askai(prompt){
         
-      //prompt = prompt.substring(0,3000);
-      //url ="https://artatfalls.pythonanywhere.com/askai";
-       // url = "https://api.aihelp.guru/askai";
-        url = "https://askai-ndmd3ghqma-uc.a.run.app/";//?q="+prompt;
-      //$("#q").val(prompt);
+     
+        url = "https://askai-ndmd3ghqma-uc.a.run.app/";
+     
     
       $.ajax({
         type: "POST",
@@ -38,3 +41,6 @@ function askai(prompt){
     // data: $('form').serialize(),
   
     }
+                </script>
+        </body>
+</html>
