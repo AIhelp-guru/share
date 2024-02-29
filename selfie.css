@@ -5,6 +5,9 @@ body {
 video {
   margin-top: 2px;
   border: 1px solid black;
+  
+    transform: scaleX(-1);
+  
 }
 
 .button {
