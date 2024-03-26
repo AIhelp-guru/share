@@ -68,11 +68,24 @@ function convertToLineHalftone(img, maxLineWidth, xLineSpacing, yLineSpacing, an
   return canvas;
 }
 function loadImage(){
-  s = document.getElementById("imagesrc").value;
+  imageUrl = document.getElementById("imagesrc").value;
   const img = document.getElementById('sourceImage');
   img.src = s;
-
+  
+    fetch(imageUrl)
+        .then(response => response.blob())
+        .then(blob => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64data = reader.result;
+                document.getElementById('sourceImage').src = base64data;
+            };
+            reader.readAsDataURL(blob);
+        })
+        .catch(error => console.error('Error converting image:', error));
 }
+
+
 function redraw(){
      const img = document.getElementById('sourceImage');
      const lw = parseInt(document.getElementById('lw').value) || 2; // Default to 2 if not specified
