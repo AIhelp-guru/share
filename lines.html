@@ -1,9 +1,11 @@
 <html>
 <body>
+  <div style="position:fixed;background:white;height:auto">
     <br><input id="lw" placeholder="linewidth"/>
     <br><input id="ls" placeholder="linespacing"/>
     <br><input id="an" placeholder="angle"/>
     <button id="go" onclick="redraw()">Go</button><br>
+  </div>
     <img id="sourceImage"  />
     <div id="painting"></div>
 <script>function convertToLineHalftone(img, maxLineWidth, lineSpacing, angle) {
