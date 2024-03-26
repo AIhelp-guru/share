@@ -57,8 +57,8 @@ function redraw(){
     const ls = document.getElementById('ls');
     const an = document.getElementById('an');
      const halftoneCanvas = convertToLineHalftone(img, lw, ls, an);
-    document.getElementById("painting").innerHTML = (halftoneCanvas);
-
+     document.getElementById("painting").innerHTML = "";
+       document.getElementById("painting").appendChild(halftoneCanvas);
 }
 // Usage:
 // Assuming you have an <img id="sourceImage" src="image.jpg">
@@ -68,7 +68,8 @@ window.onload = function() {
   img.onload = function() {
       
     const halftoneCanvas = convertToLineHalftone(img, 2, 2, 45);
-    document.getElementById("painting").innerHTML = (halftoneCanvas);
+    document.getElementById("painting").innerHTML = "";
+       document.getElementById("painting").appendChild(halftoneCanvas);
   };
   img.src = 'sample.jpg'; // Set the source to your image
 };
