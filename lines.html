@@ -1,6 +1,11 @@
 <html>
 <body>
-    <img id="sourceImage" />
+    <br><input id="lw" placeholder="linewidth"/>
+    <br><input id="ls" placeholder="linespacing"/>
+    <br><input id="an" placeholder="angle"/>
+    <button id="go" onclick="redraw()>Go</button><br>
+    <img id="sourceImage" style="width:45%;height:auto" />
+    
 <script>function convertToLineHalftone(img, lineWidth, lineSpacing, angle) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -46,13 +51,22 @@
   
   return canvas;
 }
+function redraw(){
+     const img = document.getElementById('sourceImage');
+     const lw = document.getElementById('lw');
+    const ls = document.getElementById('ls');
+    const an = document.getElementById('an');
+     const halftoneCanvas = convertToLineHalftone(img, lw, ls, an);
+    document.getElementById("painting").appendChild(halftoneCanvas);
 
+}
 // Usage:
 // Assuming you have an <img id="sourceImage" src="image.jpg">
 // and you want to transform it and put the result into <canvas id="halftoneCanvas">
 window.onload = function() {
   const img = document.getElementById('sourceImage');
   img.onload = function() {
+      
     const halftoneCanvas = convertToLineHalftone(img, 2, 2, 45);
     document.body.appendChild(halftoneCanvas);
   };
