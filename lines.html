@@ -70,7 +70,7 @@ function convertToLineHalftone(img, maxLineWidth, xLineSpacing, yLineSpacing, an
 function loadImage(){
   imageUrl = document.getElementById("imagesrc").value;
   const img = document.getElementById('sourceImage');
-  img.src = s;
+  
   
     fetch(imageUrl)
         .then(response => response.blob())
