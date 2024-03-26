@@ -56,7 +56,7 @@ function redraw(){
       lw = parseInt(document.getElementById('lw'));
      ls = parseInt(document.getElementById('ls'));
      an = parseInt(document.getElementById('an'));
-      ha = convertToLineHalftone(img, lw, ls, an);
+      ha = convertToLineHalftone(img, 5, 2, 90);
     console.log(ha);
      document.getElementById("painting").innerHTML = "";
        document.getElementById("painting").appendChild(ha);
