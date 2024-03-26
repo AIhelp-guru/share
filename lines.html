@@ -53,7 +53,7 @@
 window.onload = function() {
   const img = document.getElementById('sourceImage');
   img.onload = function() {
-    const halftoneCanvas = convertToLineHalftone(img, 2, 5, 45);
+    const halftoneCanvas = convertToLineHalftone(img, 2, 2, 45);
     document.body.appendChild(halftoneCanvas);
   };
   img.src = 'sample.jpg'; // Set the source to your image
