@@ -1,14 +1,17 @@
+<!DOCTYPE html>
 <html>
 <body>
-  <div style="position:fixed;background:white;height:auto">
-    <br><input id="lw" placeholder="linewidth"/>
-    <br><input id="ls" placeholder="linespacing"/>
-    <br><input id="an" placeholder="angle"/>
+  <div style="position:fixed; background:white; height:auto;">
+    <br><input id="lw" placeholder="Max Line Width"/>
+    <br><input id="lsx" placeholder="Line Spacing X"/>
+    <br><input id="lsy" placeholder="Line Spacing Y"/>
+    <br><input id="an" placeholder="Angle"/>
     <button id="go" onclick="redraw()">Go</button><br>
   </div>
-    <img id="sourceImage"  />
+    <img id="sourceImage" style="display:none;"/>
     <div id="painting"></div>
-<script>function convertToLineHalftone(img, maxLineWidth, xlineSpacing,ylineSpacing, angle) {
+<script>
+function convertToLineHalftone(img, maxLineWidth, xLineSpacing, yLineSpacing, angle) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
@@ -30,14 +33,14 @@
   // Convert angle to radians
   const angleRadians = angle * Math.PI / 180;
 
-  // Loop through the image by lineSpacing
-  for (let y = 0; y < canvas.height; y += lineSpacing) {
-    for (let x = 0; x < canvas.width; x += lineSpacing) {
+  // Loop through the image according to xLineSpacing and yLineSpacing
+  for (let y = 0; y < canvas.height; y += yLineSpacing) {
+    for (let x = 0; x < canvas.width; x += xLineSpacing) {
       // Calculate average darkness of the region
       let average = 0;
       let pixelCount = 0;
-      for (let dy = 0; dy < ylineSpacing; dy++) {
-        for (let dx = 0; dx < xlineSpacing; dx++) {
+      for (let dy = 0; dy < yLineSpacing; dy++) {
+        for (let dx = 0; dx < xLineSpacing; dx++) {
           const index = ((y + dy) * canvas.width + (x + dx)) * 4;
           // Use red channel for grayscale image's darkness
           average += data[index];
@@ -51,11 +54,11 @@
 
       // Set up drawing for each line with rotation and position
       ctx.save();
-      ctx.translate(x + xlineSpacing / 2, y + ylineSpacing / 2); // Center rotation in each cell
+      ctx.translate(x + xLineSpacing / 2, y + yLineSpacing / 2); // Center rotation in each cell
       ctx.rotate(angleRadians);
 
       // Draw line with dynamic width
-      ctx.fillRect(-localLineWidth / 2, -ylineSpacing / 2, localLineWidth, ylineSpacing);
+      ctx.fillRect(-localLineWidth / 2, -yLineSpacing / 2, localLineWidth, yLineSpacing);
       
       ctx.restore();
     }
@@ -64,30 +67,21 @@
   return canvas;
 }
 
-
-
-// The rest of your JavaScript remains the same.
-
 function redraw(){
      const img = document.getElementById('sourceImage');
-     const lw = parseInt(document.getElementById('lw').value);
-     const ls = parseInt(document.getElementById('ls').value);
-     const an = parseInt(document.getElementById('an').value);
-      ha = convertToLineHalftone(img, lw, ls, an);
-      console.log(ha);
-     document.getElementById("painting").innerHTML = "";
-       document.getElementById("painting").appendChild(ha);
+     const lw = parseInt(document.getElementById('lw').value) || 2; // Default to 2 if not specified
+     const lsx = parseInt(document.getElementById('lsx').value) || 2; // Default to 2 if not specified
+     const lsy = parseInt(document.getElementById('lsy').value) || 2; // Default to 2 if not specified
+     const an = parseFloat(document.getElementById('an').value) || 0; // Default to 0 if not specified
+     const ha = convertToLineHalftone(img, lw, lsx, lsy, an);
+     document.getElementById("painting").innerHTML = ""; // Clear existing content
+     document.getElementById("painting").appendChild(ha); // Add new canvas
 }
-// Usage:
-// Assuming you have an <img id="sourceImage" src="image.jpg">
-// and you want to transform it and put the result into <canvas id="halftoneCanvas">
+
 window.onload = function() {
   const img = document.getElementById('sourceImage');
   img.onload = function() {
-      
-    const halftoneCanvas = convertToLineHalftone(img, 2, 2, 45);
-    document.getElementById("painting").innerHTML = "";
-       document.getElementById("painting").appendChild(halftoneCanvas);
+    redraw(); // Initially draw the halftone image
   };
   img.src = 'sample.jpg'; // Set the source to your image
 };
