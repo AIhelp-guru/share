@@ -57,6 +57,7 @@ function redraw(){
     const ls = document.getElementById('ls');
     const an = document.getElementById('an');
      const ha = convertToLineHalftone(img, 5, 2, 45);
+    console.log(ha);
      document.getElementById("painting").innerHTML = "";
        document.getElementById("painting").appendChild(ha);
 }
