@@ -22,34 +22,46 @@
 
   // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+
   ctx.fillStyle = 'black';
 
-  // Loop through every pixel row
+  // Convert angle to radians
+  const angleRadians = angle * Math.PI / 180;
+
+  // Loop through the image by lineSpacing
   for (let y = 0; y < canvas.height; y += lineSpacing) {
-      // Loop through every pixel column
-      for (let x = 0; x < canvas.width; x++) {
-          // Get the color at the current pixel
-          const index = (y * canvas.width + x) * 4;
-          const darkness = 255 - data[index]; // Assuming the image is in grayscale, just take the red channel
-
-          // Determine line width based on darkness
-          const lineWidth = darkness / 255 * maxLineWidth;
-
-          // Draw the line segment at the current position
-          ctx.save();
-          ctx.translate(x, y);
-          ctx.rotate((Math.PI / 180) * angle);
-
-          // The line is drawn from the center of the pixel, so we offset by half the line width
-          ctx.fillRect(-lineWidth / 2, 0, lineWidth, lineSpacing);
-
-          ctx.restore();
+    for (let x = 0; x < canvas.width; x += lineSpacing) {
+      // Calculate average darkness of the region
+      let average = 0;
+      let pixelCount = 0;
+      for (let dy = 0; dy < lineSpacing; dy++) {
+        for (let dx = 0; dx < lineSpacing; dx++) {
+          const index = ((y + dy) * canvas.width + (x + dx)) * 4;
+          // Use red channel for grayscale image's darkness
+          average += data[index];
+          pixelCount++;
+        }
       }
+      average /= pixelCount;
+
+      // Adjust lineWidth based on darkness (darker = thicker line)
+      const localLineWidth = (1 - average / 255) * maxLineWidth;
+
+      // Set up drawing for each line with rotation and position
+      ctx.save();
+      ctx.translate(x + lineSpacing / 2, y + lineSpacing / 2); // Center rotation in each cell
+      ctx.rotate(angleRadians);
+
+      // Draw line with dynamic width
+      ctx.fillRect(-localLineWidth / 2, -lineSpacing / 2, localLineWidth, lineSpacing);
+      
+      ctx.restore();
+    }
   }
 
   return canvas;
 }
+
 
 // The rest of your JavaScript remains the same.
 
