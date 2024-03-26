@@ -53,10 +53,10 @@
 }
 function redraw(){
      const img = document.getElementById('sourceImage');
-     const lw = document.getElementById('lw');
-    const ls = document.getElementById('ls');
-    const an = document.getElementById('an');
-     const ha = convertToLineHalftone(img, 5, 2, 45);
+     const lw = parseInt(document.getElementById('lw'));
+    const ls = parseInt(document.getElementById('ls'));
+    const an = parseInt(document.getElementById('an'));
+     const ha = convertToLineHalftone(img, lw, ls, an);
     console.log(ha);
      document.getElementById("painting").innerHTML = "";
        document.getElementById("painting").appendChild(ha);
