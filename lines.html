@@ -8,7 +8,7 @@
   </div>
     <img id="sourceImage"  />
     <div id="painting"></div>
-<script>function convertToLineHalftone(img, maxLineWidth, lineSpacing, angle) {
+<script>function convertToLineHalftone(img, maxLineWidth, xlineSpacing,ylineSpacing, angle) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
@@ -36,8 +36,8 @@
       // Calculate average darkness of the region
       let average = 0;
       let pixelCount = 0;
-      for (let dy = 0; dy < lineSpacing; dy++) {
-        for (let dx = 0; dx < lineSpacing; dx++) {
+      for (let dy = 0; dy < ylineSpacing; dy++) {
+        for (let dx = 0; dx < xlineSpacing; dx++) {
           const index = ((y + dy) * canvas.width + (x + dx)) * 4;
           // Use red channel for grayscale image's darkness
           average += data[index];
@@ -51,11 +51,11 @@
 
       // Set up drawing for each line with rotation and position
       ctx.save();
-      ctx.translate(x + lineSpacing / 2, y + lineSpacing / 2); // Center rotation in each cell
+      ctx.translate(x + xlineSpacing / 2, y + ylineSpacing / 2); // Center rotation in each cell
       ctx.rotate(angleRadians);
 
       // Draw line with dynamic width
-      ctx.fillRect(-localLineWidth / 2, -lineSpacing / 2, localLineWidth, lineSpacing);
+      ctx.fillRect(-localLineWidth / 2, -ylineSpacing / 2, localLineWidth, ylineSpacing);
       
       ctx.restore();
     }
