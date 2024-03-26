@@ -6,16 +6,16 @@
     <button id="go" onclick="redraw()">Go</button><br>
     <img id="sourceImage"  />
     <div id="painting"></div>
-<script>function convertToLineHalftone(img, lineWidth, lineSpacing, angle) {
+<script>function convertToLineHalftone(img, maxLineWidth, lineSpacing, angle) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  
+
   canvas.width = img.width;
   canvas.height = img.height;
-  
+
   // Draw the original image on the canvas
   ctx.drawImage(img, 0, 0);
-  
+
   // Get the image data
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
@@ -24,33 +24,35 @@
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   ctx.fillStyle = 'black';
-  
-  // Loop through every (lineSpacing) pixels
+
+  // Loop through every pixel row
   for (let y = 0; y < canvas.height; y += lineSpacing) {
-    for (let x = 0; x < canvas.width; x += lineSpacing) {
-      // Average the color in the current block
-      let average = 0;
-      for (let dy = 0; dy < lineSpacing; dy++) {
-        for (let dx = 0; dx < lineWidth; dx++) {
-          const index = ((y + dy) * canvas.width + (x + dx)) * 4;
-          average += data[index]; // Assuming the image is in grayscale, just take the red channel
-        }
+      // Loop through every pixel column
+      for (let x = 0; x < canvas.width; x++) {
+          // Get the color at the current pixel
+          const index = (y * canvas.width + x) * 4;
+          const darkness = 255 - data[index]; // Assuming the image is in grayscale, just take the red channel
+
+          // Determine line width based on darkness
+          const lineWidth = darkness / 255 * maxLineWidth;
+
+          // Draw the line segment at the current position
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate((Math.PI / 180) * angle);
+
+          // The line is drawn from the center of the pixel, so we offset by half the line width
+          ctx.fillRect(-lineWidth / 2, 0, lineWidth, lineSpacing);
+
+          ctx.restore();
       }
-      average /= (lineWidth * lineSpacing);
-      
-      // Draw the line with length based on the average color
-      if (average < 255) { // Assuming that we have a black and white image
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate((Math.PI / 180) * angle);
-        ctx.fillRect(0, 0, lineWidth * (255 - average) / 255, 1);
-        ctx.restore();
-      }
-    }
   }
-  
+
   return canvas;
 }
+
+// The rest of your JavaScript remains the same.
+
 function redraw(){
      const img = document.getElementById('sourceImage');
      const lw = parseInt(document.getElementById('lw').value);
