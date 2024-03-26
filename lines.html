@@ -56,7 +56,7 @@ function redraw(){
      const lw = document.getElementById('lw');
     const ls = document.getElementById('ls');
     const an = document.getElementById('an');
-     const halftoneCanvas = convertToLineHalftone(img, lw, ls, an);
+     const halftoneCanvas = convertToLineHalftone(img, 5, 2, 45);
      document.getElementById("painting").innerHTML = "";
        document.getElementById("painting").appendChild(halftoneCanvas);
 }
