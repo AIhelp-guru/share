@@ -6,6 +6,7 @@
     <br><input id="lsx" placeholder="Line Spacing X"/>
     <br><input id="lsy" placeholder="Line Spacing Y"/>
     <br><input id="an" placeholder="Angle"/>
+    <br><input id="imagesrc" placeholder="Image Source" onblur="loadImage()"/>
     <button id="go" onclick="redraw()">Go</button><br>
   </div>
     <img id="sourceImage" style="display:none;"/>
@@ -66,7 +67,12 @@ function convertToLineHalftone(img, maxLineWidth, xLineSpacing, yLineSpacing, an
 
   return canvas;
 }
+function loadImage(){
+  s = document.getElementById("imagesrc").value;
+  const img = document.getElementById('sourceImage');
+  img.src = s;
 
+}
 function redraw(){
      const img = document.getElementById('sourceImage');
      const lw = parseInt(document.getElementById('lw').value) || 2; // Default to 2 if not specified
