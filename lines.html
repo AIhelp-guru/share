@@ -5,7 +5,7 @@
     <br><input id="an" placeholder="angle"/>
     <button id="go" onclick="redraw()">Go</button><br>
     <img id="sourceImage" style="width:400px;height:auto" />
-    
+    <div id="painting"></div>
 <script>function convertToLineHalftone(img, lineWidth, lineSpacing, angle) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -57,7 +57,7 @@ function redraw(){
     const ls = document.getElementById('ls');
     const an = document.getElementById('an');
      const halftoneCanvas = convertToLineHalftone(img, lw, ls, an);
-    document.getElementById("painting").appendChild(halftoneCanvas);
+    document.getElementById("painting").innerHTML = (halftoneCanvas);
 
 }
 // Usage:
@@ -68,7 +68,7 @@ window.onload = function() {
   img.onload = function() {
       
     const halftoneCanvas = convertToLineHalftone(img, 2, 2, 45);
-    document.body.appendChild(halftoneCanvas);
+    document.getElementById("painting").innerHTML = (halftoneCanvas);
   };
   img.src = 'sample.jpg'; // Set the source to your image
 };
