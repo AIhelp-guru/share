@@ -1,0 +1,63 @@
+<html>
+<body>
+    <img id="sourceImage" />
+<script>function convertToLineHalftone(img, lineWidth, lineSpacing, angle) {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  
+  canvas.width = img.width;
+  canvas.height = img.height;
+  
+  // Draw the original image on the canvas
+  ctx.drawImage(img, 0, 0);
+  
+  // Get the image data
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+
+  // Clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  ctx.fillStyle = 'black';
+  
+  // Loop through every (lineSpacing) pixels
+  for (let y = 0; y < canvas.height; y += lineSpacing) {
+    for (let x = 0; x < canvas.width; x += lineSpacing) {
+      // Average the color in the current block
+      let average = 0;
+      for (let dy = 0; dy < lineSpacing; dy++) {
+        for (let dx = 0; dx < lineWidth; dx++) {
+          const index = ((y + dy) * canvas.width + (x + dx)) * 4;
+          average += data[index]; // Assuming the image is in grayscale, just take the red channel
+        }
+      }
+      average /= (lineWidth * lineSpacing);
+      
+      // Draw the line with length based on the average color
+      if (average < 255) { // Assuming that we have a black and white image
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate((Math.PI / 180) * angle);
+        ctx.fillRect(0, 0, lineWidth * (255 - average) / 255, 1);
+        ctx.restore();
+      }
+    }
+  }
+  
+  return canvas;
+}
+
+// Usage:
+// Assuming you have an <img id="sourceImage" src="image.jpg">
+// and you want to transform it and put the result into <canvas id="halftoneCanvas">
+window.onload = function() {
+  const img = document.getElementById('sourceImage');
+  img.onload = function() {
+    const halftoneCanvas = convertToLineHalftone(img, 2, 5, 45);
+    document.body.appendChild(halftoneCanvas);
+  };
+  img.src = 'clarkgable.jpeg'; // Set the source to your image
+};
+</script>
+</body>
+</html>
