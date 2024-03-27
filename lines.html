@@ -130,7 +130,7 @@ function combineImages() {
   img1.onload = () => { img2.onload = draw; };
   img2.src = img2.src; // Reload img2 if already set, to ensure onload fires
   img1.src = img1.src; // Same for img1
-
+}
   function draw() {
     // Set canvas size to match the second image
     canvas.width = img2.width;
@@ -175,7 +175,7 @@ function combineImages() {
     // Update the canvas with the combined image
     ctx.putImageData(img2Data, 0, 0);
   }
-}
+
 combineImages();
 </script>
 
