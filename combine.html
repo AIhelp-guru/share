@@ -61,12 +61,15 @@ function combineImages(img1, img2, canvas, ctx) {
   // Logic to combine images (as previously defined)
 
   // Example logic for combining (simple overlay for demonstration)
-  for (let i = 0; i < resizedImg1Data.data.length; i += 4) {
+  for (let i = 0; i < resizedImg1Data.data.length; i += 4) 
+  {
     if (resizedImg1.data[i] > 200) { // Resized img1 pixel is white
         img2Data.data[i] = 255; // Resultant pixel is white
         img2Data.data[i+1] = 255;
         img2Data.data[i+2] = 255;
-      } else if (resizedImg1.data[i] >= greyThresholdLow && resizedImg1.data[i] <= greyThresholdHigh) {
+      }
+      
+      /*else if (resizedImg1.data[i] >= greyThresholdLow && resizedImg1.data[i] <= greyThresholdHigh) {
         // If resized img1 is grey, keep img2 pixel as is
       } else {
         // For black or any other value in resized img1, and if img2 pixel is white
@@ -74,7 +77,7 @@ function combineImages(img1, img2, canvas, ctx) {
           img2Data.data[i] = 255; // Resultant pixel is white
           img2Data.data[i+1] = 255;
           img2Data.data[i+2] = 255;
-        }
+        }*/
       }
     // Add conditions and logic as needed
   }
