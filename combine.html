@@ -60,7 +60,7 @@ function combineImages() {
         // If resized img1 is grey, keep img2 pixel as is
         img2Data.data[i] = 0; // Resultant pixel is white
         img2Data.data[i+1] = 0;
-        img2Data.data[i+2] = 0;
+        img2Data.data[i+2] = 0; 
       } else {
         // For black or any other value in resized img1, and if img2 pixel is white
         if (img2Data.data[i] === 255) {
