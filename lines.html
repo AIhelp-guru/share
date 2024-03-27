@@ -135,7 +135,7 @@ function combineImages() {
     // Set canvas size to match the second image
     canvas.width = img2.width;
     canvas.height = img2.height;
-
+alert();
     // Resize img1 to match img2 dimensions using a temporary canvas
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = img2.width;
@@ -143,7 +143,7 @@ function combineImages() {
     const tempCtx = tempCanvas.getContext('2d');
     tempCtx.drawImage(img1, 0, 0, img2.width, img2.height); // Draw and resize img1 on tempCanvas
     const resizedImg1 = tempCtx.getImageData(0, 0, img2.width, img2.height); // Get resized img1 data
-    alert();
+    
     console.log(tempCanvas);
 
     // Draw img2 directly onto the main canvas and get its image data
