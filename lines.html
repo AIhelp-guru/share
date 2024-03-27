@@ -120,61 +120,50 @@ window.onload = function() {
 <canvas id="resultCanvas"></canvas>
 
 <script>
+function loadImage(){
+  const imageUrl = document.getElementById("imagesrc").value;
+  const img = document.getElementById('sourceImage');
+  // Assuming 'loadImage' function is meant to load 'sourceImage' and redraw upon loading
+  img.onload = redraw; // Assign redraw function to onload
+  img.src = imageUrl; // Set source which triggers the loading (and onload event)
+}
+
+// Adjust the redraw function as needed
+
 function combineImages() {
   const img1 = document.getElementById('image1');
   const img2 = document.getElementById('image2');
   const canvas = document.getElementById('resultCanvas');
   const ctx = canvas.getContext('2d');
 
-  // Ensure images are loaded
-  img1.onload = () => { img2.onload = draw; };
-  img2.src = img2.src; // Reload img2 if already set, to ensure onload fires
-  img1.src = img1.src; // Same for img1
-}
-  function draw() {
-    // Set canvas size to match the second image
-    canvas.width = img2.width;
-    canvas.height = img2.height;
-alert();
-    // Resize img1 to match img2 dimensions using a temporary canvas
-    const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = img2.width;
-    tempCanvas.height = img2.height;
-    const tempCtx = tempCanvas.getContext('2d');
-    tempCtx.drawImage(img1, 0, 0, img2.width, img2.height); // Draw and resize img1 on tempCanvas
-    const resizedImg1 = tempCtx.getImageData(0, 0, img2.width, img2.height); // Get resized img1 data
-    
-    console.log(tempCanvas);
-
-    // Draw img2 directly onto the main canvas and get its image data
-    ctx.drawImage(img2, 0, 0);
-    const img2Data = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-    // Combine images based on the rules
-    for (let i = 0; i < resizedImg1.data.length; i += 4) {
-      // Assuming grey is mid-point between black and white
-      const greyThresholdLow = 96; // Adjust as needed
-      const greyThresholdHigh = 160; // Adjust as needed
-
-      if (resizedImg1.data[i] === 255) { // Resized img1 pixel is white
-        img2Data.data[i] = 255; // Resultant pixel is white
-        img2Data.data[i+1] = 255;
-        img2Data.data[i+2] = 255;
-      } else if (resizedImg1.data[i] >= greyThresholdLow && resizedImg1.data[i] <= greyThresholdHigh) {
-        // If resized img1 is grey, keep img2 pixel as is
-      } else {
-        // For black or any other value in resized img1, and if img2 pixel is white
-        if (img2Data.data[i] === 255) {
-          img2Data.data[i] = 255; // Resultant pixel is white
-          img2Data.data[i+1] = 255;
-          img2Data.data[i+2] = 255;
-        }
-      }
-    }
-
-    // Update the canvas with the combined image
-    ctx.putImageData(img2Data, 0, 0);
+  // Function to be called once both images are loaded
+  function onBothImagesLoaded() {
+    // Your logic to combine images
   }
+
+  let imagesLoaded = 0;
+  function imageLoaded() {
+    imagesLoaded++;
+    if (imagesLoaded === 2) {
+      onBothImagesLoaded(); // Call the combining function once both images are loaded
+    }
+  }
+
+  // Set up onload handlers and re-assign src to trigger loading if necessary
+  if (!img1.complete || img1.naturalWidth === 0) {
+    img1.onload = imageLoaded;
+    img1.src = img1.src; // Re-trigger loading if not already done
+  } else {
+    imageLoaded(); // Image already loaded
+  }
+
+  if (!img2.complete || img2.naturalWidth === 0) {
+    img2.onload = imageLoaded;
+    img2.src = img2.src; // Same for img2
+  } else {
+    imageLoaded(); // Image already loaded
+  }
+}
 
 combineImages();
 </script>
