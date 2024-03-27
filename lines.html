@@ -143,7 +143,7 @@ function combineImages() {
     const tempCtx = tempCanvas.getContext('2d');
     tempCtx.drawImage(img1, 0, 0, img2.width, img2.height); // Draw and resize img1 on tempCanvas
     const resizedImg1 = tempCtx.getImageData(0, 0, img2.width, img2.height); // Get resized img1 data
-
+    document.body.appendChild(tempCanvas);
     // Draw img2 directly onto the main canvas and get its image data
     ctx.drawImage(img2, 0, 0);
     const img2Data = ctx.getImageData(0, 0, canvas.width, canvas.height);
