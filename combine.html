@@ -62,11 +62,17 @@ function combineImages(img1, img2, canvas, ctx) {
 
   // Example logic for combining (simple overlay for demonstration)
   for (let i = 0; i < resizedImg1Data.data.length; i += 4) {
-    if (resizedImg1Data.data[i] < 128) { // Example condition
+    if (resizedImg1Data.data[i] > 200) { // Example condition
       img2Data.data[i] = resizedImg1Data.data[i]; // Replace with pixel from img1
       img2Data.data[i+1] = resizedImg1Data.data[i+1];
       img2Data.data[i+2] = resizedImg1Data.data[i+2];
     }
+    if (resizedImg1Data.data[i] < 50) { // Example condition
+      img2Data.data[i] = 0; // Replace with pixel from img1
+      img2Data.data[i+1] = 0;
+      img2Data.data[i+2] = 0;
+    }
+
     // Add conditions and logic as needed
   }
 
