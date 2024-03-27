@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="image1" src="lines.jpg" style="display:none;">
+<img id="image2" src="sample.jpg" style="display:none;">
+<canvas id="resultCanvas"></canvas>
+
+<script>
+function loadImage(){
+  const imageUrl = document.getElementById("imagesrc").value;
+  const img = document.getElementById('sourceImage');
+  // Assuming 'loadImage' function is meant to load 'sourceImage' and redraw upon loading
+  img.onload = redraw; // Assign redraw function to onload
+  img.src = imageUrl; // Set source which triggers the loading (and onload event)
+}
+
+// Adjust the redraw function as needed
+
+function combineImages() {
+  const img1 = document.getElementById('image1');
+  const img2 = document.getElementById('image2');
+  const canvas = document.getElementById('resultCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Function to be called once both images are loaded
+  function onBothImagesLoaded() {
+    // Your logic to combine images
+  }
+
+  let imagesLoaded = 0;
+  function imageLoaded() {
+    imagesLoaded++;
+    if (imagesLoaded === 2) {
+      onBothImagesLoaded(); // Call the combining function once both images are loaded
+    }
+  }
+
+  // Set up onload handlers and re-assign src to trigger loading if necessary
+  if (!img1.complete || img1.naturalWidth === 0) {
+    img1.onload = imageLoaded;
+    img1.src = img1.src; // Re-trigger loading if not already done
+  } else {
+    imageLoaded(); // Image already loaded
+  }
+
+  if (!img2.complete || img2.naturalWidth === 0) {
+    img2.onload = imageLoaded;
+    img2.src = img2.src; // Same for img2
+  } else {
+    imageLoaded(); // Image already loaded
+  }
+}
+
+combineImages();
+</script>
+</body>
+</html>
