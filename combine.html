@@ -63,6 +63,10 @@ function combineImages(img1, img2, canvas, ctx) {
         img2Data.data[i] = 255; // Resultant pixel is white
         img2Data.data[i+1] = 255;
         img2Data.data[i+2] = 255;
+      } else if (resizedImg1Data.data[i] < 20) { // Resized img1 pixel is white
+        img2Data.data[i] = 0; // Resultant pixel is white
+        img2Data.data[i+1] = 0;
+        img2Data.data[i+2] = 0;
       } else {
         // For black or any other value in resized img1, and if img2 pixel is white
         /*if (img2Data.data[i] > 200) {
