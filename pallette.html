@@ -1,12 +1,17 @@
 <html>
 <body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+Hue 1: <input type="number" id="hue1" value="0"><br>
+Hue 2: <input type="number" id="hue2" value="90"><br>
+Hue 3: <input type="number" id="hue3" value="180"><br>
+Hue 4: <input type="number" id="hue4" value="270"><br>
+<button onclick="applyHues()">Apply Hues</button>
 
 <input type="file" id="uploadImage" />
-<canvas id="canvas" style="display:block;"></canvas>
+<canvas id="canvas" style="display:block;height:300px;width:auto"></canvas>
 
 <script>
-document.getElementById('uploadImage').addEventListener('change', function(e) {
+/*document.getElementById('uploadImage').addEventListener('change', function(e) {
     const reader = new FileReader();
     reader.onload = function(event) {
         const img = new Image();
@@ -49,7 +54,7 @@ document.getElementById('uploadImage').addEventListener('change', function(e) {
     };
     reader.readAsDataURL(e.target.files[0]);
 });
-
+*/
 //functions 
 function rgbToHsl(r, g, b) {
     r /= 255, g /= 255, b /= 255;
@@ -80,6 +85,61 @@ function hslToRgb(h, s, l) {
 
     return [Math.floor(f(0) * 255), Math.floor(f(8) * 255), Math.floor(f(4) * 255)];
 }
+function findClosestHue(hue, hues) {
+    let minDiff = 360, closestHue = hue;
+    for (let i = 0; i < hues.length; i++) {
+        let diff = Math.min(Math.abs(hue - hues[i]), 360 - Math.abs(hue - hues[i]));
+        if (diff < minDiff) {
+            minDiff = diff;
+            closestHue = hues[i];
+        }
+    }
+    return closestHue;
+}
+function applyHues() {
+    const hues = [
+        parseInt(document.getElementById('hue1').value),
+        parseInt(document.getElementById('hue2').value),
+        parseInt(document.getElementById('hue3').value),
+        parseInt(document.getElementById('hue4').value)
+    ];
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+
+    for (let i = 0; i < data.length; i += 4) {
+        let [r, g, b] = [data[i], data[i+1], data[i+2]];
+        let [h, s, l] = rgbToHsl(r, g, b);
+        let closestHue = findClosestHue(h, hues);
+        let [newR, newG, newB] = hslToRgb(closestHue, s, l);
+        data[i] = newR;
+        data[i+1] = newG;
+        data[i+2] = newB;
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    canvas.style.display = 'block'; // Make sure the canvas is shown
+}
+
+document.getElementById('uploadImage').addEventListener('change', function(e) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.getElementById('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            applyHues(); // Call applyHues here to initially apply the default hues
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+});
+
 
 </script>
 
