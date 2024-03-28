@@ -11,17 +11,17 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 Hex 1: 
-<input type="text" id="hex1" value="FF00ff" oninput="updateColorPatch(1)">
-<input type="range" id="slider1" min="0" max="255" value="205" oninput="updateColorFromSlider(1)" style="display:none">
+<input type="text" id="hex1" value="FF00ff" oninput="updateColorFromHex(1)">
+<input type="range" id="slider1" min="0" max="255" value="205" oninput="updateHexFromHue(1)" style="display:none">
 <span class="colorPatch" id="colorPatch1"></span><br>
-<input type="text" id="hex2" value="FF0000" oninput="updateColorPatch(2)">
-<input type="range" id="slider2" min="0" max="255" value="55" oninput="updateColorFromSlider(2)" style="display:none">
+<input type="text" id="hex2" value="FF0000" oninput="updateColorFromHex(2)">
+<input type="range" id="slider2" min="0" max="255" value="55" oninput="updateHexFromHue(2)" style="display:none">
 <span class="colorPatch" id="colorPatch2"></span><br>
-    <input type="text" id="hex3" value="FF3300" oninput="updateColorPatch(3)">
-<input type="range" id="slider3" min="0" max="255" value="155" oninput="updateColorFromSlider(3)" style="display:none">
+    <input type="text" id="hex3" value="FF3300" oninput="updateColorFromHex(3)">
+<input type="range" id="slider3" min="0" max="255" value="155" oninput="updateHexFromHue(3)" style="display:none">
 <span class="colorPatch" id="colorPatch3"></span><br>
-<input type="text" id="hex4" value="FFee00" oninput="updateColorPatch(4)">
-<input type="range" id="slider4" min="0" max="255" value="5" oninput="updateColorFromSlider(4)" style="display:none">
+<input type="text" id="hex4" value="FFee00" oninput="updateColorFromHex(4)">
+<input type="range" id="slider4" min="0" max="255" value="5" oninput="updateHexFromHue(4)" style="display:none">
 <span class="colorPatch" id="colorPatch4"></span><br>
 <button onclick="applyHues()">Apply Hues</button>
 
@@ -180,27 +180,44 @@ function applyHues() {
     ctx.putImageData(imageData, 0, 0);
     // No need to set display style for modifiedCanvas here since it's already set when image is loaded
 }
-function updateColorPatch(index) {
+// Assumes rgbToHsl and hslToRgb functions are already defined
+
+function updateColorFromHex(index) {
     const hexInput = document.getElementById('hex' + index).value;
-    // Ensure the color value includes "#" for CSS even if the input doesn't
-    const colorValue = "#" + hexInput;
     const colorPatch = document.getElementById('colorPatch' + index);
-    colorPatch.style.backgroundColor = colorValue;
-
-    // Parse the red component from the hex input and update the slider
-    const redValue = parseInt(hexInput, 16);
-    document.getElementById('slider' + index).value = redValue;
+    const rgb = hexToRgb(hexInput);
+    const [h, s, l] = rgbToHsl(...rgb);
+    // Update the color patch directly with hex input
+    colorPatch.style.backgroundColor = `#${hexInput}`;
+    // Update the hue slider to reflect the hue component
+    document.getElementById(`hueSlider${index}`).value = h;
 }
 
-function updateColorFromSlider(index) {
-    const slider = document.getElementById('slider' + index);
-    const hexInput = document.getElementById('hex' + index);
-    // Convert the slider value to a hex string for the red component
-    const redHex = parseInt(slider.value).toString(16).padStart(2, '0').toUpperCase();
-    // Update the hex input with the new red component, keeping green and blue components unchanged
-    hexInput.value = redHex + hexInput.value;
-    updateColorPatch(index); // Ensure the color patch is updated accordingly
+function updateHexFromHue(index) {
+    const hueSlider = document.getElementById(`hueSlider${index}`);
+    const hexInput = document.getElementById(`hex${index}`);
+    // Convert existing hex to rgb, then to hsl, update the hue, convert back to rgb, then to hex
+    let rgb = hexToRgb(hexInput.value);
+    let hsl = rgbToHsl(...rgb);
+    // Update the hue component
+    hsl[0] = parseInt(hueSlider.value);
+    rgb = hslToRgb(...hsl);
+    const hex = rgbToHex(...rgb);
+    hexInput.value = hex;
+    // Update the color patch
+    const colorPatch = document.getElementById(`colorPatch${index}`);
+    colorPatch.style.backgroundColor = `#${hex}`;
 }
+
+// Helper function to convert RGB array to Hex
+function rgbToHex(r, g, b) {
+    return [r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+    }).join('').toUpperCase();
+}
+
+// Assumes hexToRgb function is already defined
 
 
     
