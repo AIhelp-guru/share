@@ -188,7 +188,7 @@ function updateColorPatch(index) {
     colorPatch.style.backgroundColor = colorValue;
 
     // Parse the red component from the hex input and update the slider
-    const redValue = parseInt(hexInput.substring(0, 2), 16);
+    const redValue = parseInt(hexInput, 16);
     document.getElementById('slider' + index).value = redValue;
 }
 
@@ -198,7 +198,7 @@ function updateColorFromSlider(index) {
     // Convert the slider value to a hex string for the red component
     const redHex = parseInt(slider.value).toString(16).padStart(2, '0').toUpperCase();
     // Update the hex input with the new red component, keeping green and blue components unchanged
-    hexInput.value = redHex + hexInput.value.substring(2, 6);
+    hexInput.value = redHex + hexInput.value;
     updateColorPatch(index); // Ensure the color patch is updated accordingly
 }
 
