@@ -157,15 +157,16 @@ document.getElementById('uploadImage').addEventListener('change', function(e) {
             const canvas = document.getElementById('canvas');
             canvas.width = img.width;
             canvas.height = img.height;
-            const ctx = canvas.getContext('2d');
+            // Specify willReadFrequently attribute
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
             ctx.drawImage(img, 0, 0);
-            // Call applyHues here to initially apply the default hues
-            applyHues(); 
+            applyHues();
         };
         img.src = event.target.result;
     };
     reader.readAsDataURL(e.target.files[0]);
 });
+
 
 
 </script>
