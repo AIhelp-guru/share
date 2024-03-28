@@ -183,8 +183,8 @@ function applyHues() {
 function updateColorPatch(index) {
     const hexInput = document.getElementById('hex' + index);
     const colorPatch = document.getElementById('colorPatch' + index);
-    colorPatch.style.backgroundColor = "#" + hexInput.value;
-    // Update the slider value based on the red component of the hex
+    colorPatch.style.backgroundColor = hexInput.value;
+    // Correctly parse and set the slider value based on the red component of the hex value
     const redValue = parseInt(hexInput.value.substring(1, 3), 16);
     document.getElementById('slider' + index).value = redValue;
 }
@@ -192,12 +192,13 @@ function updateColorPatch(index) {
 function updateColorFromSlider(index) {
     const slider = document.getElementById('slider' + index);
     const hexInput = document.getElementById('hex' + index);
-    // Convert slider value (red component) to hex, keep green and blue from the current color
-    const redHex = parseInt(slider.value).toString(16).padStart(2, '0');
-    const newHex = redHex + hexInput.value.substring(3);
-    hexInput.value = newHex;
-    updateColorPatch(index); // Update the color patch and ensure consistency
+    // Keep the green and blue components from the current color, update the red component based on the slider
+    const redHex = parseInt(slider.value).toString(16).padStart(2, '0').toUpperCase();
+    const currentHex = hexInput.value;
+    hexInput.value = "#" + redHex + currentHex.substring(3, 7);
+    updateColorPatch(index); // Ensure the color patch is updated
 }
+
 
 
     
