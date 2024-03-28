@@ -1,11 +1,12 @@
 <html>
 <body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-Hue 1: <input type="number" id="hue1" value="0"><br>
-Hue 2: <input type="number" id="hue2" value="90"><br>
-Hue 3: <input type="number" id="hue3" value="180"><br>
-Hue 4: <input type="number" id="hue4" value="270"><br>
+Hex 1: <input type="text" id="hex1" value="#FF0000"><br>
+Hex 2: <input type="text" id="hex2" value="#00FF00"><br>
+Hex 3: <input type="text" id="hex3" value="#0000FF"><br>
+Hex 4: <input type="text" id="hex4" value="#FFFF00"><br>
 <button onclick="applyHues()">Apply Hues</button>
+
 
 <input type="file" id="uploadImage" />
 <canvas id="canvas" style="display:block;height:300px;width:auto"></canvas>
@@ -96,13 +97,38 @@ function findClosestHue(hue, hues) {
     }
     return closestHue;
 }
+
+function hexToRgb(hex) {
+    let r = 0, g = 0, b = 0;
+    // 3 digits
+    if (hex.length == 4) {
+        r = parseInt(hex[1] + hex[1], 16);
+        g = parseInt(hex[2] + hex[2], 16);
+        b = parseInt(hex[3] + hex[3], 16);
+    }
+    // 6 digits
+    else if (hex.length == 7) {
+        r = parseInt(hex[1] + hex[2], 16);
+        g = parseInt(hex[3] + hex[4], 16);
+        b = parseInt(hex[5] + hex[6], 16);
+    }
+    return [r, g, b];
+}
+
+function hexToHue(hex) {
+    const [r, g, b] = hexToRgb(hex);
+    const [h, s, l] = rgbToHsl(r, g, b);
+    return h;
+}
+
 function applyHues() {
-    const hues = [
-        parseInt(document.getElementById('hue1').value),
-        parseInt(document.getElementById('hue2').value),
-        parseInt(document.getElementById('hue3').value),
-        parseInt(document.getElementById('hue4').value)
+    const hexes = [
+        document.getElementById('hex1').value,
+        document.getElementById('hex2').value,
+        document.getElementById('hex3').value,
+        document.getElementById('hex4').value
     ];
+    const hues = hexes.map(hex => hexToHue(hex));
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -133,7 +159,8 @@ document.getElementById('uploadImage').addEventListener('change', function(e) {
             canvas.height = img.height;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0);
-            applyHues(); // Call applyHues here to initially apply the default hues
+            // Call applyHues here to initially apply the default hues
+            applyHues(); 
         };
         img.src = event.target.result;
     };
