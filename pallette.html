@@ -16,10 +16,22 @@ Hex 3: <input type="text" id="hex3" value="#0000FF" oninput="updateColorPatch(3)
 Hex 4: <input type="text" id="hex4" value="#FFFF00" oninput="updateColorPatch(4)"> <span class="colorPatch" id="colorPatch4"></span><br>
 <button onclick="applyHues()">Apply Hues</button>
 
-
-
+<style>
+  .canvas-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+</style>
 <input type="file" id="uploadImage" />
-<canvas id="canvas" style="display:block;height:300px;width:auto"></canvas>
+<div class="canvas-container">
+  <canvas id="originalCanvas"></canvas>
+  <canvas id="modifiedCanvas" style="display:block;height:300px;width:auto"></canvas>
+</div>
+
+
+
+
 
 <script>
 /*document.getElementById('uploadImage').addEventListener('change', function(e) {
@@ -140,8 +152,8 @@ function applyHues() {
     ];
     const hues = hexes.map(hex => hexToHue(hex));
 
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
+    const modifiedCanvas = document.getElementById('modifiedCanvas');
+    const ctx = modifiedCanvas.getContext('2d');
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
 
@@ -170,18 +182,29 @@ document.getElementById('uploadImage').addEventListener('change', function(e) {
     reader.onload = function(event) {
         const img = new Image();
         img.onload = function() {
-            const canvas = document.getElementById('canvas');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            // Specify willReadFrequently attribute
-            const ctx = canvas.getContext('2d', { willReadFrequently: true });
-            ctx.drawImage(img, 0, 0);
+            // Display the original image
+            const originalCanvas = document.getElementById('originalCanvas');
+            originalCanvas.width = img.width;
+            originalCanvas.height = img.height;
+            const originalCtx = originalCanvas.getContext('2d');
+            originalCtx.drawImage(img, 0, 0);
+
+            // Prepare the modified canvas
+            const modifiedCanvas = document.getElementById('modifiedCanvas');
+            modifiedCanvas.style.display = 'block'; // Make sure the modified canvas is shown
+            modifiedCanvas.width = img.width;
+            modifiedCanvas.height = img.height;
+            const modifiedCtx = modifiedCanvas.getContext('2d', { willReadFrequently: true });
+            modifiedCtx.drawImage(img, 0, 0);
+
+            // Apply hues to the modified image
             applyHues();
         };
         img.src = event.target.result;
     };
     reader.readAsDataURL(e.target.files[0]);
 });
+
 
 window.onload = function() {
     updateColorPatch(1);
