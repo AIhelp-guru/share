@@ -180,34 +180,25 @@ function applyHues() {
     // No need to set display style for modifiedCanvas here since it's already set when image is loaded
 }
 // Assumes rgbToHsl and hslToRgb functions are already defined
-
 function updateColorFromHex(index) {
-    const hexInput = document.getElementById('hex' + index).value;
-    const colorPatch = document.getElementById('colorPatch' + index);
-    const rgb = hexToRgb(hexInput);
-    const [h, s, l] = rgbToHsl(...rgb);
-    // Update the color patch directly with hex input
+    const hexInput = document.getElementById(`hex${index}`).value;
+    const colorPatch = document.getElementById(`colorPatch${index}`);
+    const [r, g, b] = hexToRgb(hexInput);
+    const [h] = rgbToHsl(r, g, b);
+    document.getElementById(`slider${index}`).value = h;
     colorPatch.style.backgroundColor = `#${hexInput}`;
-    // Update the hue slider to reflect the hue component
-    document.getElementById(`hueSlider${index}`).value = h;
 }
+
 
 function updateHexFromHue(index) {
-    const hueSlider = document.getElementById(`hueSlider${index}`);
+    const hueSlider = document.getElementById(`slider${index}`);
     const hexInput = document.getElementById(`hex${index}`);
-    // Convert existing hex to rgb, then to hsl, update the hue, convert back to rgb, then to hex
-    let rgb = hexToRgb(hexInput.value);
-    let hsl = rgbToHsl(...rgb);
-    // Update the hue component
-    hsl[0] = parseInt(hueSlider.value);
-    rgb = hslToRgb(...hsl);
-    const hex = rgbToHex(...rgb);
-    hexInput.value = hex;
-    // Update the color patch
+    // Assuming default S and L values for simplicity
+    const [r, g, b] = hslToRgb(hueSlider.value, 100, 50);
+    hexInput.value = rgbToHex(r, g, b);
     const colorPatch = document.getElementById(`colorPatch${index}`);
-    colorPatch.style.backgroundColor = `#${hex}`;
+    colorPatch.style.backgroundColor = `#${hexInput.value}`;
 }
-
 // Helper function to convert RGB array to Hex
 function rgbToHex(r, g, b) {
     return [r, g, b].map(x => {
@@ -249,13 +240,30 @@ document.getElementById('uploadImage').addEventListener('change', function(e) {
 });
 
 
-window.onload = function() {
-    updateColorPatch(1);
-    updateColorPatch(2);
-    updateColorPatch(3);
-    updateColorPatch(4);
-};
+function hexToRgb(hex) {
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+    return [r, g, b];
+}
 
+function rgbToHex(r, g, b) {
+    return [r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+    }).join('').toUpperCase();
+}
+
+
+
+
+// Initialize color patches on page load
+window.onload = function() {
+    [1].forEach(updateColorFromHex); // Add more indices as needed
+     [2].forEach(updateColorFromHex); // Add more indices as needed
+     [3].forEach(updateColorFromHex); // Add more indices as needed
+     [4].forEach(updateColorFromHex); // Add more indices as needed
+};
 
 </script>
 
