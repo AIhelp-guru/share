@@ -152,9 +152,10 @@ function applyHues() {
     ];
     const hues = hexes.map(hex => hexToHue(hex));
 
+    // Correcting the canvas references
     const modifiedCanvas = document.getElementById('modifiedCanvas');
     const ctx = modifiedCanvas.getContext('2d');
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const imageData = ctx.getImageData(0, 0, modifiedCanvas.width, modifiedCanvas.height); // corrected
     const data = imageData.data;
 
     for (let i = 0; i < data.length; i += 4) {
@@ -168,8 +169,9 @@ function applyHues() {
     }
 
     ctx.putImageData(imageData, 0, 0);
-    canvas.style.display = 'block'; // Make sure the canvas is shown
+    // No need to set display style for modifiedCanvas here since it's already set when image is loaded
 }
+
 function updateColorPatch(index) {
     const hexInput = document.getElementById('hex' + index);
     const colorPatch = document.getElementById('colorPatch' + index);
