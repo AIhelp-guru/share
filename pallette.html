@@ -11,16 +11,16 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 Hex 1: 
-<input type="text" id="hex1" value="#FF0000" oninput="updateColorPatch(1)">
+<input type="text" id="hex1" value="FF0000" oninput="updateColorPatch(1)">
 <input type="range" id="slider1" min="0" max="255" value="205" oninput="updateColorFromSlider(1)">
 <span class="colorPatch" id="colorPatch1"></span><br>
-<input type="text" id="hex2" value="#FF0000" oninput="updateColorPatch(2)">
+<input type="text" id="hex2" value="FF0000" oninput="updateColorPatch(2)">
 <input type="range" id="slider2" min="0" max="255" value="55" oninput="updateColorFromSlider(2)">
 <span class="colorPatch" id="colorPatch2"></span><br>
-    <input type="text" id="hex3" value="#FF0000" oninput="updateColorPatch(3)">
+    <input type="text" id="hex3" value="FF0000" oninput="updateColorPatch(3)">
 <input type="range" id="slider3" min="0" max="255" value="155" oninput="updateColorFromSlider(3)">
 <span class="colorPatch" id="colorPatch3"></span><br>
-<input type="text" id="hex4" value="#FF0000" oninput="updateColorPatch(4)">
+<input type="text" id="hex4" value="FFee00" oninput="updateColorPatch(4)">
 <input type="range" id="slider4" min="0" max="255" value="5" oninput="updateColorFromSlider(4)">
 <span class="colorPatch" id="colorPatch4"></span><br>
 <button onclick="applyHues()">Apply Hues</button>
@@ -181,7 +181,7 @@ function applyHues() {
     // No need to set display style for modifiedCanvas here since it's already set when image is loaded
 }
 function updateColorPatch(index) {
-    const hexInput = document.getElementById('hex' + index);
+    const hexInput = "#"+document.getElementById('hex' + index);
     const colorPatch = document.getElementById('colorPatch' + index);
     colorPatch.style.backgroundColor = hexInput.value;
     // Correctly parse and set the slider value based on the red component of the hex value
@@ -191,11 +191,11 @@ function updateColorPatch(index) {
 
 function updateColorFromSlider(index) {
     const slider = document.getElementById('slider' + index);
-    const hexInput = document.getElementById('hex' + index);
+    const hexInput = "#"+ document.getElementById('hex' + index);
     // Keep the green and blue components from the current color, update the red component based on the slider
     const redHex = parseInt(slider.value).toString(16).padStart(2, '0').toUpperCase();
     const currentHex = hexInput.value;
-    hexInput.value = "#" + redHex + currentHex.substring(3, 7);
+    hexInput.value = redHex + currentHex.substring(3, 7);
     updateColorPatch(index); // Ensure the color patch is updated
 }
 
