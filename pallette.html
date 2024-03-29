@@ -101,6 +101,19 @@ function hexToHue(hex) {
 }
 
 function applyHues() {
+      const originalCanvas = document.getElementById('originalCanvas');
+            originalCanvas.width = img.width;
+            originalCanvas.height = img.height;
+            const originalCtx = originalCanvas.getContext('2d');
+            originalCtx.drawImage(img, 0, 0);
+
+            // Prepare the modified canvas
+            const modifiedCanvas = document.getElementById('modifiedCanvas');
+            modifiedCanvas.style.display = 'block'; // Make sure the modified canvas is shown
+            modifiedCanvas.width = img.width;
+            modifiedCanvas.height = img.height;
+            const modifiedCtx = modifiedCanvas.getContext('2d', { willReadFrequently: true });
+            modifiedCtx.drawImage(img, 0, 0);
     const hues = [1, 2, 3, 4].map(index => parseInt(document.getElementById(`slider${index}`).value));
     const modifiedCanvas = document.getElementById('modifiedCanvas');
     const ctx = modifiedCanvas.getContext('2d');
@@ -170,19 +183,7 @@ document.getElementById('uploadImage').addEventListener('change', function(e) {
         const img = new Image();
         img.onload = function() {
             // Display the original image
-            const originalCanvas = document.getElementById('originalCanvas');
-            originalCanvas.width = img.width;
-            originalCanvas.height = img.height;
-            const originalCtx = originalCanvas.getContext('2d');
-            originalCtx.drawImage(img, 0, 0);
-
-            // Prepare the modified canvas
-            const modifiedCanvas = document.getElementById('modifiedCanvas');
-            modifiedCanvas.style.display = 'block'; // Make sure the modified canvas is shown
-            modifiedCanvas.width = img.width;
-            modifiedCanvas.height = img.height;
-            const modifiedCtx = modifiedCanvas.getContext('2d', { willReadFrequently: true });
-            modifiedCtx.drawImage(img, 0, 0);
+          
 
             // Apply hues to the modified image
             applyHues();
