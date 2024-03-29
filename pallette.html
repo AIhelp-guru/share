@@ -117,7 +117,8 @@ function applyHues() {
     }
 
     const hues = [1, 2, 3, 4].map(index => parseInt(document.getElementById(`slider${index}`).value));
-
+    modifiedCanvas = document.getElementById('modifiedCanvas');
+    ctx = modifiedCanvas.getContext('2d');
     // No need to re-declare modifiedCanvas and ctx here
     const imageData = ctx.getImageData(0, 0, modifiedCanvas.width, modifiedCanvas.height);
     const data = imageData.data;
