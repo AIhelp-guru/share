@@ -101,23 +101,24 @@ function hexToHue(hex) {
 }
 
 function applyHues() {
-    originalCanvas = document.getElementById('originalCanvas');
-     if (originalImage) {
+    const originalCanvas = document.getElementById('originalCanvas');
+    if (originalCanvas) {
         const modifiedCanvas = document.getElementById('modifiedCanvas');
-        modifiedCanvas.width = originalImage.width;
-        modifiedCanvas.height = originalImage.height;
+        // Use the canvas dimensions, not the context's
+        modifiedCanvas.width = originalCanvas.width;
+        modifiedCanvas.height = originalCanvas.height;
         const ctx = modifiedCanvas.getContext('2d');
         
-        // Draw the original image onto the modified canvas
-        ctx.drawImage(originalImage, 0, 0);
+        // Correctly use originalCanvas here
+        ctx.drawImage(originalCanvas, 0, 0);
     } else {
         console.error('Original image not loaded');
         return;
     }
+
     const hues = [1, 2, 3, 4].map(index => parseInt(document.getElementById(`slider${index}`).value));
-     modifiedCanvas = document.getElementById('modifiedCanvas');
-    ctx = modifiedCanvas.getContext('2d');
-    
+
+    // No need to re-declare modifiedCanvas and ctx here
     const imageData = ctx.getImageData(0, 0, modifiedCanvas.width, modifiedCanvas.height);
     const data = imageData.data;
 
@@ -125,7 +126,6 @@ function applyHues() {
         let [r, g, b] = [data[i], data[i + 1], data[i + 2]];
         let [h, s, l] = rgbToHsl(r, g, b);
 
-        // Find the hue closest to the current and snap to it
         let diff = 360;
         let newHue = 0;
         for (let j = 0; j < hues.length; j++) {
@@ -136,10 +136,7 @@ function applyHues() {
             }
         }
 
-        // Apply the new hue while keeping S and L the same
         [r, g, b] = hslToRgb(newHue, s, l);
-
-        // Update the pixel data
         data[i] = r;
         data[i + 1] = g;
         data[i + 2] = b;
