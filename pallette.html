@@ -109,32 +109,32 @@ function hexToHue(hex) {
 }
 
 function applyHues() {
+    // Remove the concatenation of "#"
     const hexes = [
-        "#"+document.getElementById('hex1').value,
-        "#"+document.getElementById('hex2').value,
-        "#"+document.getElementById('hex3').value,
-        "#"+document.getElementById('hex4').value
+        document.getElementById('hex1').value,
+        document.getElementById('hex2').value,
+        document.getElementById('hex3').value,
+        document.getElementById('hex4').value
     ];
-    const hues = hexes.map(hex => hexToHue(hex));
+    const hues = hexes.map(hex => hexToHue("#" + hex)); // Prefix "#" for hexToHue processing if needed
 
-    // Correcting the canvas references
     const modifiedCanvas = document.getElementById('modifiedCanvas');
     const ctx = modifiedCanvas.getContext('2d');
-    const imageData = ctx.getImageData(0, 0, modifiedCanvas.width, modifiedCanvas.height); // corrected
+    const imageData = ctx.getImageData(0, 0, modifiedCanvas.width, modifiedCanvas.height);
     const data = imageData.data;
 
     for (let i = 0; i < data.length; i += 4) {
+        let closestHue = findClosestHue(hues[i % hues.length], hues); // Example logic
+        // This example assumes you're trying to apply a hue adjustment. Adjust as needed.
         let [r, g, b] = [data[i], data[i+1], data[i+2]];
         let [h, s, l] = rgbToHsl(r, g, b);
-        let closestHue = findClosestHue(h, hues);
-        let [newR, newG, newB] = hslToRgb(closestHue, s, l);
-        data[i] = newR;
-        data[i+1] = newG;
-        data[i+2] = newB;
+        [r, g, b] = hslToRgb(closestHue, s, l); // Adjust hue only
+        data[i] = r;
+        data[i+1] = g;
+        data[i+2] = b;
     }
 
     ctx.putImageData(imageData, 0, 0);
-    // No need to set display style for modifiedCanvas here since it's already set when image is loaded
 }
 // Assumes rgbToHsl and hslToRgb functions are already defined
 function updateColorFromHex(index) {
