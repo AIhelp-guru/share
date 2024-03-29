@@ -101,14 +101,8 @@ function hexToHue(hex) {
 }
 
 function applyHues() {
-    // Remove the concatenation of "#"
-    const hexes = [
-        document.getElementById('hex1').value,
-        document.getElementById('hex2').value,
-        document.getElementById('hex3').value,
-        document.getElementById('hex4').value
-    ];
-    const hues = hexes.map(hex => hexToHue("#" + hex)); // Prefix "#" for hexToHue processing if needed
+    // Use the hue value from the first slider as an example
+    const hueValue = parseInt(document.getElementById('slider1').value);
 
     const modifiedCanvas = document.getElementById('modifiedCanvas');
     const ctx = modifiedCanvas.getContext('2d');
@@ -116,11 +110,14 @@ function applyHues() {
     const data = imageData.data;
 
     for (let i = 0; i < data.length; i += 4) {
-        let closestHue = findClosestHue(hues[i % hues.length], hues); // Example logic
-        // This example assumes you're trying to apply a hue adjustment. Adjust as needed.
+        // Convert RGB to HSL
         let [r, g, b] = [data[i], data[i+1], data[i+2]];
         let [h, s, l] = rgbToHsl(r, g, b);
-        [r, g, b] = hslToRgb(closestHue, s, l); // Adjust hue only
+
+        // Apply the hue shift uniformly, keeping S and L the same
+        [r, g, b] = hslToRgb(hueValue, s, l);
+
+        // Update the pixel data
         data[i] = r;
         data[i+1] = g;
         data[i+2] = b;
@@ -128,6 +125,7 @@ function applyHues() {
 
     ctx.putImageData(imageData, 0, 0);
 }
+
 // Assumes rgbToHsl and hslToRgb functions are already defined
 function updateColorFromHex(index) {
     const hexInput = document.getElementById(`hex${index}`).value;
