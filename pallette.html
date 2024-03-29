@@ -12,15 +12,19 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <input type="text" id="hex1" value="FF00ff" oninput="updateColorFromHex(1)">
 <input type="range" id="slider1" min="0" max="255" value="205" oninput="updateHexFromHue(1)" >
+<input type="color" id="colorPicker1" oninput="updateHueFromColorPicker(1)">
 <span class="colorPatch" id="colorPatch1"></span><br>
 <input type="text" id="hex2" value="FF0000" oninput="updateColorFromHex(2)">
 <input type="range" id="slider2" min="0" max="255" value="55" oninput="updateHexFromHue(2)" >
+    <input type="color" id="colorPicker1" oninput="updateHueFromColorPicker(2)">
 <span class="colorPatch" id="colorPatch2"></span><br>
     <input type="text" id="hex3" value="FF3300" oninput="updateColorFromHex(3)">
 <input type="range" id="slider3" min="0" max="255" value="155" oninput="updateHexFromHue(3)">
+    <input type="color" id="colorPicker1" oninput="updateHueFromColorPicker(3)">
 <span class="colorPatch" id="colorPatch3"></span><br>
 <input type="text" id="hex4" value="FFee00" oninput="updateColorFromHex(4)">
 <input type="range" id="slider4" min="0" max="255" value="5" oninput="updateHexFromHue(4)" >
+    <input type="color" id="colorPicker1" oninput="updateHueFromColorPicker(4)">
 <span class="colorPatch" id="colorPatch4"></span><br>
 <button onclick="applyHues()">Apply Hues</button>
 
@@ -158,7 +162,43 @@ function updateColorFromHex(index) {
     applyHues();
 }
 
+function updateHueFromColorPicker(index) {
+    const colorPicker = document.getElementById(`colorPicker${index}`);
+    const slider = document.getElementById(`slider${index}`);
 
+    // Convert color picker value (hex) to HSL
+    const [r, g, b] = hexToRgb(colorPicker.value.substring(1)); // Remove '#' from hex value
+    const [h] = rgbToHsl(r, g, b);
+
+    // Update the slider position to match the hue
+    slider.value = h;
+
+    // Optionally, update the hex input and the color patch
+    document.getElementById(`hex${index}`).value = colorPicker.value.substring(1); // Remove '#' for consistency
+    document.getElementById(`colorPatch${index}`).style.backgroundColor = colorPicker.value;
+
+    // Apply hues if needed
+    applyHues();
+}
+
+function updateSliderFromHue(index) {
+    const slider = document.getElementById(`slider${index}`);
+    const colorPicker = document.getElementById(`colorPicker${index}`);
+
+    // Convert the slider value (hue) back to a color
+    const [r, g, b] = hslToRgb(parseInt(slider.value), 100, 50); // Example: full saturation and lightness
+    const hex = rgbToHex(r, g, b);
+
+    // Update the color picker value
+    colorPicker.value = `#${hex}`;
+
+    // Optionally, update the hex input and the color patch directly with the new hex value
+    document.getElementById(`hex${index}`).value = hex;
+    document.getElementById(`colorPatch${index}`).style.backgroundColor = `#${hex}`;
+
+    // Apply hues if needed
+    applyHues();
+}
 function updateHexFromHue(index) {
     const hueSlider = document.getElementById(`slider${index}`);
     const hexInput = document.getElementById(`hex${index}`);
