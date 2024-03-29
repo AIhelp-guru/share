@@ -103,6 +103,8 @@ function hexToHue(hex) {
 function applyHues() {
     // Use the hue value from the first slider as an example
     const hueValue = parseInt(document.getElementById('slider1').value);
+    const hues = [1, 2, 3, 4].map(index => parseInt(document.getElementById(`slider${index}`).value));
+
 
     const modifiedCanvas = document.getElementById('modifiedCanvas');
     const ctx = modifiedCanvas.getContext('2d');
@@ -113,9 +115,22 @@ function applyHues() {
         // Convert RGB to HSL
         let [r, g, b] = [data[i], data[i+1], data[i+2]];
         let [h, s, l] = rgbToHsl(r, g, b);
+        
+        //find the hue closest to the current and snap to it
+        let diff = 360;
+        let newHue =0;
+        for(i=0;i<hue.length;i++){
+            
+            temp = Math.abs(hues[i] - h);
+            if(temp < diff){
+                diff = temp;
+                newHue = hues[i];
+            }
 
+        }
+        
         // Apply the hue shift uniformly, keeping S and L the same
-        [r, g, b] = hslToRgb(hueValue, s, l);
+        [r, g, b] = hslToRgb(newHue, s, l);
 
         // Update the pixel data
         data[i] = r;
