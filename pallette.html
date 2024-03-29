@@ -143,6 +143,7 @@ function updateColorFromHex(index) {
     const [h] = rgbToHsl(r, g, b);
     document.getElementById(`slider${index}`).value = h;
     colorPatch.style.backgroundColor = `#${hexInput}`;
+    applyHues();
 }
 
 
@@ -154,6 +155,7 @@ function updateHexFromHue(index) {
     hexInput.value = rgbToHex(r, g, b);
     const colorPatch = document.getElementById(`colorPatch${index}`);
     colorPatch.style.backgroundColor = `#${hexInput.value}`;
+    applyHues();
 }
 // Helper function to convert RGB array to Hex
 
