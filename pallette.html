@@ -101,6 +101,7 @@ function hexToHue(hex) {
 }
 
 function applyHues() {
+    originalCanvas = document.getElementById('originalCanvas');
      if (originalImage) {
         const modifiedCanvas = document.getElementById('modifiedCanvas');
         modifiedCanvas.width = originalImage.width;
