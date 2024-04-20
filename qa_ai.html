@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Google Sheets Web App Connector</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Google Sheets Web App Connector</h1>
+<button id="readData">Read Data</button>
+<button id="writeData">Write Data</button>
+<div id="output">Data will appear here...</div>
+
+<script>
+$(document).ready(function() {
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbzCubbwwhApTeyyIN9KmuQI2RSS7faZJU-tw80WkiYvrGQq-059Hs0SbrB6Z0zdqDD__w/exec'; // Replace with your Web App URL
+ 
+    $('#readData').click(function() {
+        $.ajax({
+            url: webAppUrl,
+            type: 'GET', // or 'POST' if your web app is set to handle POST for read
+            data: { 'action': 'read' },
+            success: function(response) {
+                $('#output').html(response);
+            },
+            error: function(xhr, status, error) {
+                $('#output').html("Error: " + error);
+            }
+        });
+    });
+
+    $('#writeData').click(function() {
+        $.ajax({
+            url: webAppUrl,
+            type: 'GET', // Change to 'POST' if using doPost in your Google Script
+            data: { 'action': 'write' },
+            success: function(response) {
+                $('#output').html(response);
+            },
+            error: function(xhr, status, error) {
+                $('#output').html("Error: " + error);
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
