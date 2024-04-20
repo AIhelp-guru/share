@@ -55,7 +55,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // Change to 'POST' if using doPost in your Google Script
-            data: { 'action': 'write' , 'qa':JSON.stringify({'q':'hello','a':'answer'}),
+            data: { 'action': 'write' , 'qa':JSON.stringify({'q':'hello','a':'answer'})},
             success: function(response) {
                 $('#output').html(response);
             },
