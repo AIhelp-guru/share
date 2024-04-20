@@ -15,8 +15,9 @@
 <div id="output">Data will appear here...</div>
 
 <script>
+    var key = "AKfycbwirmm83h9w-KITg5mupHntLxTqjn0V2C9mGTG5Zfhle7q78NvC9e7O3nNkyWBlKVbqNA"
 $(document).ready(function() {
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbx3RxrYOBdQrw9pfOR8TVlTB9rGaQbNSXSd0DX5XsL9sFiuJiy3Rt1fc6MrBIfgjXXMCQ/exec'; // Replace with your Web App URL
+    const webAppUrl = 'https://script.google.com/macros/s/'+key+'/exec'; // Replace with your Web App URL
  
     $('#readData').click(function() {
         $.ajax({
@@ -54,7 +55,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // Change to 'POST' if using doPost in your Google Script
-            data: { 'action': 'write' },
+            data: { 'action': 'write' , 'qa':JSON.stringify({'q':'hello','a':'answer'}),
             success: function(response) {
                 $('#output').html(response);
             },
