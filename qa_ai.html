@@ -28,7 +28,9 @@ $(document).ready(function() {
             success: function(response) {
                 var output = "";
                 for(i=0;i<response.length;i++){
-                     output += (response[i]+"<br>");
+                     qas = response[i].split(",");
+                     
+                     output += ("<h2>Question: "+ qas[0]+"</h2><h5>"+qas[1]+"</h5>");
                 }
                $('#output').html(output);
             },
