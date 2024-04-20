@@ -5,28 +5,33 @@
 <title>Google Sheets Web App Connector</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  html, body {
+    height: 100%; /* Make sure the HTML and body are full height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: Arial, sans-serif; /* Styling the font */
   }
   #leftpanel {
     width: 60%; /* Left panel covers 60% of the screen width */
+    height: 100%; /* Stretch to the bottom of the screen */
     float: left; /* Align to the left */
     padding: 20px; /* Space inside the panel */
-    box-sizing: border-box; /* Padding included in width calculation */
+    box-sizing: border-box; /* Padding and border included in width and height calculation */
+    background: #f8f8f8; /* Light grey background for visibility */
   }
   #rightpanel {
-    background : darkgray;
-    
-    width: 35%; /* Right panel covers the remaining 40% of the screen width */
+    width: 40%; /* Right panel covers the remaining 40% of the screen width */
+    height: 100%; /* Stretch to the bottom of the screen */
     float: left; /* Align next to the left panel */
     padding: 20px; /* Space inside the panel */
-    box-sizing: border-box; /* Padding included in width calculation */
+    box-sizing: border-box; /* Padding and border included in width and height calculation */
+    background: #333; /* White background for visibility */
   }
+
   #aians{
     background:black;
     color:white;
-    height:800px;
+    height:auto;
     padding:10px;
   }
   #prompt{
