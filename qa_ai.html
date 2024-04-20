@@ -21,8 +21,10 @@ $(document).ready(function() {
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
             data: { 'action': 'read' },
             success: function(response) {
-                console.log(response);
-                $('#output').html(response);
+                for(i=0;i<response.length;i++){
+                     $('#output').html(response[i]+"<br>");
+                }
+               
             },
             error: function(xhr, status, error) {
                 $('#output').html("Error: " + error);
