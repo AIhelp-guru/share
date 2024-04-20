@@ -9,17 +9,35 @@
 <h1>Google Sheets Web App Connector</h1>
 <button id="readData">Read Data</button>
 <button id="writeData">Write Data</button>
+<button id="askai">Ask AI</button>
 <div id="output">Data will appear here...</div>
 
 <script>
 $(document).ready(function() {
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbzCubbwwhApTeyyIN9KmuQI2RSS7faZJU-tw80WkiYvrGQq-059Hs0SbrB6Z0zdqDD__w/exec'; // Replace with your Web App URL
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbx3RxrYOBdQrw9pfOR8TVlTB9rGaQbNSXSd0DX5XsL9sFiuJiy3Rt1fc6MrBIfgjXXMCQ/exec'; // Replace with your Web App URL
  
     $('#readData').click(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
             data: { 'action': 'read' },
+            success: function(response) {
+                var output = "";
+                for(i=0;i<response.length;i++){
+                     output += (response[i]+"<br>");
+                }
+               $('#output').html(output);
+            },
+            error: function(xhr, status, error) {
+                $('#output').html("Error: " + error);
+            }
+        });
+    });
+     $('#askai').click(function() {
+        $.ajax({
+            url: webAppUrl,
+            type: 'GET', // or 'POST' if your web app is set to handle POST for read
+            data: { 'action': 'askai', 'prompt':'what is 6*7' },
             success: function(response) {
                 var output = "";
                 for(i=0;i<response.length;i++){
