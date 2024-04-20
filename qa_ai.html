@@ -51,7 +51,7 @@ $(document).ready(function() {
             success: function(response) {
              
                $('#output').html(response);
-                $('#readData').click(); 
+               
             },
             error: function(xhr, status, error) {
                 $('#output').html("Error: " + error);
@@ -65,7 +65,8 @@ $(document).ready(function() {
             type: 'GET', // Change to 'POST' if using doPost in your Google Script
             data: { 'action': 'write' , 'prompt':$("#prompt").val()+','+$("#output").text()},
             success: function(response) {
-                $('#output').html(response);
+               // $('#output').html(response);
+                 $('#readData').click(); 
             },
             error: function(xhr, status, error) {
                 $('#output').html("Error: " + error);
