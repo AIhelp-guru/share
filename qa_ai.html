@@ -4,16 +4,36 @@
 <meta charset="UTF-8">
 <title>Google Sheets Web App Connector</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  #leftpanel {
+    width: 60%; /* Left panel covers 60% of the screen width */
+    float: left; /* Align to the left */
+    padding: 20px; /* Space inside the panel */
+    box-sizing: border-box; /* Padding included in width calculation */
+  }
+  #rightpanel {
+    width: 40%; /* Right panel covers the remaining 40% of the screen width */
+    float: left; /* Align next to the left panel */
+    padding: 20px; /* Space inside the panel */
+    box-sizing: border-box; /* Padding included in width calculation */
+  }
+</style>
 </head>
 <body>
-<h1>Google Sheets Web App Connector</h1>
+<h1>Questions on topics</h1>
+<div id="leftpanel">
     <input id="key" value="AKfycbxnrGpg-CCtIiBpIxQf821Mv9iPCKdnNdardLpu5y_nOTLktga_HkoULG3CI40eGp41Cg" />
+    
 <button id="readData">Read Data</button>
     <div id="output" style="border:1px solid black;padding:5px">Data will appear here...</div>
 
 
-<br>
-    <div style="position:fixed;bottom:0px">
+</div><div id="rightpanel">
+ 
     <input id="prompt" placeholder="ask anything else" />
 <button id="askai">Ask AI</button><button id="writeData">Write Data</button>
     </div>
@@ -66,6 +86,7 @@ $(document).ready(function() {
             data: { 'action': 'write' , 'prompt':$("#prompt").val()+','+$("#output").text()},
             success: function(response) {
                // $('#output').html(response);
+                
                  $('#readData').click(); 
             },
             error: function(xhr, status, error) {
