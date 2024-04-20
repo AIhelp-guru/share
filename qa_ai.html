@@ -51,6 +51,7 @@ $(document).ready(function() {
             success: function(response) {
              
                $('#output').html(response);
+                $('#readData').click(); 
             },
             error: function(xhr, status, error) {
                 $('#output').html("Error: " + error);
