@@ -26,6 +26,12 @@
   #aians{
     background:black;
     color:white;
+    height:100%;
+  }
+  #prompt{
+  width:90%;
+  height:100px;
+    overflow:auto;
   }
 </style>
 </head>
@@ -40,10 +46,10 @@
 
 </div><div id="rightpanel">
  
-    <input id="prompt" placeholder="ask anything else" />
+    <textarea id="prompt" placeholder="ask anything else" ></textarea><button id="askai">Ask AI</button>
     <div id="aians">
     </div>
-<button id="askai">Ask AI</button><button id="writeData">Write Data</button>
+<button id="writeData">Write Data</button>
     </div>
 <script>
     var key = $("#key").val();
@@ -91,7 +97,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // Change to 'POST' if using doPost in your Google Script
-            data: { 'action': 'write' , 'prompt':$("#prompt").val()+','+$("#output").text()},
+            data: { 'action': 'write' , 'prompt':$("#prompt").val()+','+$("#aians").text()},
             success: function(response) {
                // $('#output').html(response);
                 
