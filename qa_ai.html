@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Google Sheets Web App Connector</h1>
+    <input id="key" value="AKfycbyoyL6MsL5715FJirv8A6UMywcWQtOm2MhbkNziAVI13D6snfZb-MOjMFMzd25ETM1qCQ" />
 <button id="readData">Read Data</button>
 <button id="writeData">Write Data</button>
 <br>
@@ -15,7 +16,7 @@
 <div id="output">Data will appear here...</div>
 
 <script>
-    var key = "AKfycbyoyL6MsL5715FJirv8A6UMywcWQtOm2MhbkNziAVI13D6snfZb-MOjMFMzd25ETM1qCQ"
+    var key = $("#key").val();
 $(document).ready(function() {
     const webAppUrl = 'https://script.google.com/macros/s/'+key+'/exec'; // Replace with your Web App URL
  
