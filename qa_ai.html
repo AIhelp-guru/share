@@ -28,7 +28,7 @@ $(document).ready(function() {
             success: function(response) {
                 var output = "";
                 for(i=0;i<response.length;i++){
-                    r = response[i];
+                    r = response[i].toString();
                     qas = (r).split(",");
                      
                      output += ("<h2>Question: "+ qas[0]+"</h2><h5>"+qas[1]+"</h5>");
