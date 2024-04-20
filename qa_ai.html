@@ -9,12 +9,14 @@
 <h1>Google Sheets Web App Connector</h1>
     <input id="key" value="AKfycbxnrGpg-CCtIiBpIxQf821Mv9iPCKdnNdardLpu5y_nOTLktga_HkoULG3CI40eGp41Cg" />
 <button id="readData">Read Data</button>
-<button id="writeData">Write Data</button>
-<br>
-    <input id="prompt" placeholder="ask anything" />
-<button id="askai">Ask AI</button>
-<div id="output" style="border:1px solid black;padding:5px">Data will appear here...</div>
+    <div id="output" style="border:1px solid black;padding:5px">Data will appear here...</div>
 
+
+<br>
+    <div style="position:fixed;bottom:0px">
+    <input id="prompt" placeholder="ask anything else" />
+<button id="askai">Ask AI</button><button id="writeData">Write Data</button>
+    </div>
 <script>
     var key = $("#key").val();
 $(document).ready(function() {
@@ -31,7 +33,7 @@ $(document).ready(function() {
                     r = response[i].toString();
                     qas = (r).split(",");
                      
-                     output += ("<h2>Question: "+ qas[0]+"</h2><h5>"+qas[1]+"</h5>");
+                     output += ("<h3>"+ qas[0]+"</h3><div>"+qas[1]+"</div>");
                     //output += response[i] + "<br>";
                 }
                $('#output').html(output);
