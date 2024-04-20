@@ -9,6 +9,8 @@
 <h1>Google Sheets Web App Connector</h1>
 <button id="readData">Read Data</button>
 <button id="writeData">Write Data</button>
+<br>
+    <input id="prompt" placeholder="ask anything" />
 <button id="askai">Ask AI</button>
 <div id="output">Data will appear here...</div>
 
@@ -37,13 +39,10 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
-            data: { 'action': 'askai', 'prompt':'what is 6*7' },
+            data: { 'action': 'askai', 'prompt': $("#prompt").val() },
             success: function(response) {
-                var output = "";
-                for(i=0;i<response.length;i++){
-                     output += (response[i]+"<br>");
-                }
-               $('#output').html(output);
+             
+               $('#output').html(response);
             },
             error: function(xhr, status, error) {
                 $('#output').html("Error: " + error);
