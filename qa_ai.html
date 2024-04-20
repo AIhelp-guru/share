@@ -16,10 +16,16 @@
     box-sizing: border-box; /* Padding included in width calculation */
   }
   #rightpanel {
-    width: 40%; /* Right panel covers the remaining 40% of the screen width */
+    background : darkgray;
+    
+    width: 35%; /* Right panel covers the remaining 40% of the screen width */
     float: left; /* Align next to the left panel */
     padding: 20px; /* Space inside the panel */
     box-sizing: border-box; /* Padding included in width calculation */
+  }
+  #aians{
+    background:black;
+    color:white;
   }
 </style>
 </head>
@@ -35,6 +41,8 @@
 </div><div id="rightpanel">
  
     <input id="prompt" placeholder="ask anything else" />
+    <div id="aians">
+    </div>
 <button id="askai">Ask AI</button><button id="writeData">Write Data</button>
     </div>
 <script>
@@ -70,7 +78,7 @@ $(document).ready(function() {
             data: { 'action': 'askai', 'prompt': $("#prompt").val() },
             success: function(response) {
              
-               $('#output').html(response);
+               $('#aians').html(response);
                
             },
             error: function(xhr, status, error) {
