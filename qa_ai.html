@@ -71,6 +71,7 @@ $(document).ready(function() {
                 var output = "";
                 for(i=0;i<response.length;i++){
                     r = response[i].toString();
+                    console.log(r);
                     qas = (r).split(";//;");
                      
                      output += ("<h3>"+ qas[0]+"</h3><div>"+qas[1]+"</div>");
