@@ -13,7 +13,7 @@
 <br>
     <input id="prompt" placeholder="ask anything" />
 <button id="askai">Ask AI</button>
-<div id="output">Data will appear here...</div>
+<div id="output" style="border:1px solid black;padding:5px">Data will appear here...</div>
 
 <script>
     var key = $("#key").val();
@@ -56,7 +56,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // Change to 'POST' if using doPost in your Google Script
-            data: { 'action': 'write' , 'prompt':'question,answer'},
+            data: { 'action': 'write' , 'prompt':$("#prompt").val()+','+$("#output").text()},
             success: function(response) {
                 $('#output').html(response);
             },
