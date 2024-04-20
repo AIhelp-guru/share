@@ -28,10 +28,11 @@ $(document).ready(function() {
             success: function(response) {
                 var output = "";
                 for(i=0;i<response.length;i++){
-                    //qas = (response[i]).split(",");
+                    r = response[i];
+                    qas = (r).split(",");
                      
-                     //output += ("<h2>Question: "+ qas[0]+"</h2><h5>"+qas[1]+"</h5>");
-                    output += response[i] + "<br>";
+                     output += ("<h2>Question: "+ qas[0]+"</h2><h5>"+qas[1]+"</h5>");
+                    //output += response[i] + "<br>";
                 }
                $('#output').html(output);
             },
