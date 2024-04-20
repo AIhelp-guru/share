@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Google Sheets Web App Connector</h1>
-    <input id="key" value="AKfycbyoyL6MsL5715FJirv8A6UMywcWQtOm2MhbkNziAVI13D6snfZb-MOjMFMzd25ETM1qCQ" />
+    <input id="key" value="AKfycbxnrGpg-CCtIiBpIxQf821Mv9iPCKdnNdardLpu5y_nOTLktga_HkoULG3CI40eGp41Cg" />
 <button id="readData">Read Data</button>
 <button id="writeData">Write Data</button>
 <br>
@@ -56,7 +56,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // Change to 'POST' if using doPost in your Google Script
-            data: { 'action': 'write' , 'prompt':JSON.stringify({'q':'hello','a':'answer'})},
+            data: { 'action': 'write' , 'prompt':'question,answer'},
             success: function(response) {
                 $('#output').html(response);
             },
