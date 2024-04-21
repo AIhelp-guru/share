@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+t<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -112,7 +112,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
-            data: { 'action': 'askai', 'prompt': $("#prompt").val() },
+            data: { 'action': 'askai', 'prompt': "subject:"+$("#lessons").val()+";question:"+$("#prompt").val() },
             success: function(response) {
              
                $('#aians').html(response);
