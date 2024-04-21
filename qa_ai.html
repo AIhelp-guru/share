@@ -53,11 +53,11 @@ t<!DOCTYPE html>
 </style>
 </head>
 <body>
-<h1>Questions on topics</h1><div><input id="search" /><select id="lessons"></select></div>
+<h1>Questions on topics</h1><div><input id="search" /><button id="readData">Search</button><select id="lessons"></select></div>
 <div id="leftpanel">
     <input id="key" value="AKfycbxo3-AoyQfMMMIDzOJceAxknnEmFFlzqj6Xnt7KTBxi3-IGl2VZKIW1l0YUG_2yIguTyw" />
     
-<button id="readData">Read Data</button>
+
     <div id="output" style="border:1px solid black;padding:5px">Data will appear here...</div>
 
 
@@ -78,7 +78,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
-            data: { 'action': 'read','topic':"Javascript"},
+            data: { 'action': 'read','topic':$("#search").val()},
             success: function(response) {
                 var output = "";
                 
