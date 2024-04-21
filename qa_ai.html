@@ -39,6 +39,12 @@
   height:100px;
     overflow:auto;
   }
+  #lessons{
+  background:black;
+    color:white;
+    font-size:2em;
+    padding:5px;
+  }
 </style>
 </head>
 <body>
@@ -70,8 +76,8 @@ $(document).ready(function() {
                 var output = "";
                 for(i=0;i<response.length;i++){
                     r = response[i].toString();
-            
-                    $("#lessons").append("<option value='"+response[i]+"'>"+response[i]+"</option>");
+                    r =r.replace(";//;",">");
+                    $("#lessons").append("<option value='"+r+"'>"+r+"</option>");
                 }
                $('#output').html(output);
             },
