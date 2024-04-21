@@ -81,10 +81,10 @@ $(document).ready(function() {
             data: { 'action': 'read','topic':$("#search").val()},
             success: function(response) {
                 var output = "";
-                
+                console.log(response);
                 for(i=0;i<response.length;i++){
                     r = response[i].toString();
-                    console.log(r);
+                    
                     qas = (r).split(";//;");
                      
                      output += ("<h3>"+ qas[0]+"</h3><div class='topic'>Topic:"+qas[2]+"</div><div>"+qas[1]+"</div>");
