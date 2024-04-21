@@ -50,7 +50,7 @@ t<!DOCTYPE html>
 <body>
 <h1>Questions on topics</h1><div><select id="lessons"></select></div>
 <div id="leftpanel">
-    <input id="key" value="AKfycbx91o3G_lHf7jRlJK0xSWflGjehWU21EjmHCDFIXWAiQomAhnFYcyz7gmCfm0szjBoSnw" />
+    <input id="key" value="AKfycbwA5HL7B_UgoRKm53SEKgjFe8YUMrKEFNVHWBjzip8OUMlXk1_sKnIrTvr2nmhTF-dd-A" />
     
 <button id="readData">Read Data</button>
     <div id="output" style="border:1px solid black;padding:5px">Data will appear here...</div>
@@ -96,7 +96,7 @@ $(document).ready(function() {
                 for(i=0;i<response.length;i++){
                     r = response[i].toString();
                     console.log(r);
-                    qas = (r).split(";//;");
+                    qas = (r).split(",");
                      
                      output += ("<h3>"+ qas[0]+"</h3><div>"+qas[1]+"</div>");
                     //output += response[i] + "<br>";
