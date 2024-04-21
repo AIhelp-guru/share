@@ -79,9 +79,9 @@ $(document).ready(function() {
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
             data: { 'action': 'read','topic':$("#search").val()},
-            success: function(response) {
+            success: function(resarrray) {
                 var output = "";
-                console.log(response);
+                response = resarrray[0];
                 for(i=0;i<response.length;i++){
                     r = response[i].toString();
                     
