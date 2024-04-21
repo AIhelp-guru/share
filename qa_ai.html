@@ -2,7 +2,7 @@ t<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Google Sheets Web App Connector</title>
+<title>Question based learning</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
   html, body {
@@ -116,7 +116,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
-            data: { 'action': 'askai', 'prompt': "context:"+$("#fullanswer").text()+";question:"+$("#prompt").val() },
+            data: { 'action': 'askai', 'prompt': "context:"+$("#fullanswer").text()+";follow_up question:"+$("#prompt").val() },
             success: function(response) {
              
                $('#aians').html(response);
