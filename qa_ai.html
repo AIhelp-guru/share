@@ -42,9 +42,9 @@
 </style>
 </head>
 <body>
-<h1>Questions on topics</h1>
+<h1>Questions on topics</h1><div><select id="lessons"></select></div>
 <div id="leftpanel">
-    <input id="key" value="AKfycbyzXzrtWOUY5PI0Ak1eQ5UeuDMGtZOJf993fyBKOJhlaD3lJ47ez_fDpSra63EgQ7ECWA" />
+    <input id="key" value="AKfycbw9DpSFODWxNT4aOjSjBUHj1ND6YstmAy4KVsvljnqE4earR_9FGgcMtEYIgvjD7X0dzw" />
     
 <button id="readData">Read Data</button>
     <div id="output" style="border:1px solid black;padding:5px">Data will appear here...</div>
@@ -61,6 +61,24 @@
     var key = $("#key").val();
 $(document).ready(function() {
     const webAppUrl = 'https://script.google.com/macros/s/'+key+'/exec'; // Replace with your Web App URL
+     //fetch subjects
+        $.ajax({
+            url: webAppUrl,
+            type: 'GET', // or 'POST' if your web app is set to handle POST for read
+            data: { 'action': 'getsubjects' },
+            success: function(response) {
+                var output = "";
+                for(i=0;i<response.length;i++){
+                    r = response[i].toString();
+            
+                    $("#lessons").append("<option value='"+response[i]+"'>"+response[i]+"</option>");
+                }
+               $('#output').html(output);
+            },
+            error: function(xhr, status, error) {
+                $('#output').html("Error: " + error);
+            }
+        });
  
     $('#readData').click(function() {
         $.ajax({
