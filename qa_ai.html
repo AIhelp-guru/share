@@ -90,7 +90,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
-            data: { 'action': 'read' },
+            data: { 'action': 'read','topic':$("#lessons").val() },
             success: function(response) {
                 var output = "";
                 for(i=0;i<response.length;i++){
