@@ -75,10 +75,11 @@ $(document).ready(function() {
     
  
     $('#readData').click(function() {
+        searchterm = ($("#search").val()).toString();
         $.ajax({
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
-            data: { 'action': 'read','topic':$("#search").val()},
+            data: { 'action': 'read','topic':searchterm},
             success: function(resarrray) {
                 var output = "";
                 response = resarrray[0];
