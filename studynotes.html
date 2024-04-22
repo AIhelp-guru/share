@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Notes: JavaScript Variables</title>
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    .container {
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+    }
+    
+    header, section, footer {
+        border-bottom: 1px solid #ccc;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    textarea {
+        width: 100%;
+    }
+    
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+</style>    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Variables</h1>
+            <p>Understanding the basics of variable declaration, types, and scope in JavaScript.</p>
+        </header>
+
+        <section class="key-concepts">
+            <h2>Key Concepts and Definitions</h2>
+            <ul>
+                <li><strong>Variable:</strong> A symbol or container that stores data values.</li>
+                <li><strong>var:</strong> A keyword to declare a variable with function scope.</li>
+                <li><strong>let:</strong> A keyword to declare a variable with block scope.</li>
+                <li><strong>const:</strong> A keyword to declare a variable whose value cannot be changed.</li>
+            </ul>
+        </section>
+
+        <section class="core-questions">
+            <h2>Core Questions</h2>
+            <div>
+                <h3>Main Question: What are variables in JavaScript?</h3>
+                <p>Sub-question: How do different keywords affect variable scope and mutability?</p>
+            </div>
+        </section>
+
+        <section class="in-depth">
+            <h2>In-Depth Exploration</h2>
+            <p>Explore how <code>var</code>, <code>let</code>, and <code>const</code> behave in different contexts:</p>
+            <div>
+                <p><strong>Example:</strong> Demonstrate a variable declared with <code>var</code> inside a loop.</p>
+                <textarea rows="4" cols="50">for (var i = 0; i < 5; i++) { console.log(i); }</textarea>
+            </div>
+        </section>
+
+        <section class="practical-application">
+            <h2>Practical Applications</h2>
+            <p>Understanding the scope of variables can help prevent bugs related to variable hoisting and scope creep.</p>
+        </section>
+
+        <section class="review-summary">
+            <h2>Review and Summary</h2>
+            <p>Review key points about JavaScript variables and test your understanding with the following questions:</p>
+            <ul>
+                <li>What is the difference between <code>var</code> and <code>let</code>?</li>
+                <li>Can a variable declared with <code>const</code> be reassigned?</li>
+            </ul>
+        </section>
+
+        <footer>
+            <button onclick="printNotes()">Print Notes</button>
+        </footer>
+    </div>
+    <script >
+        function printNotes() {
+    window.print();
+}
+    </script>
+</body>
+</html>
