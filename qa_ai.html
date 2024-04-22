@@ -116,7 +116,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // or 'POST' if your web app is set to handle POST for read
-            data: { 'action': 'askai', 'prompt': "context:"+$("#fullanswer").text()+";follow_up question:"+$("#prompt").val() },
+            data: { 'action': 'askai', 'prompt': "previous question and answer:"+$("#fullanswer").text()+";follow_up question:"+$("#prompt").val()+"; Please answer the followup question." },
             success: function(response) {
              
                $('#aians').html(response);
@@ -132,7 +132,7 @@ $(document).ready(function() {
         $.ajax({
             url: webAppUrl,
             type: 'GET', // Change to 'POST' if using doPost in your Google Script
-            data: { 'action': 'write' , 'prompt':$("#prompt").val()+';//;'+$("#aians").text()+';//;'+$("#lessons").val()},
+            data: { 'action': 'write' , 'prompt':$("#prompt").val()+';//;'+$("#aians").text()+';//;'+($("#fullanswer").find(".topic:eq(0)").text()).replace("Topic:","")},
             success: function(response) {
                // $('#output').html(response);
                 
