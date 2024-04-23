@@ -1,106 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Notes: JavaScript Variables</title>
-    <style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
+  <title>High School Physics Lesson</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
     }
-    
-    .container {
-        width: 80%;
-        margin: auto;
-        padding: 20px;
+
+    h1 {
+      text-align: center;
     }
-    
-    header, section, footer {
-        border-bottom: 1px solid #ccc;
-        padding: 20px;
-        margin-top: 20px;
+
+    h2 {
+      margin-top: 20px;
     }
-    
-    textarea {
-        width: 100%;
+
+    .section {
+      margin-bottom: 30px;
     }
-    
-    button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
+
+    .section-heading {
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-    
-    button:hover {
-        background-color: #45a049;
+
+    .prefilled-content {
+      background-color: #f5f5f5;
+      padding: 10px;
     }
-</style>    
+
+    .guidance {
+      font-style: italic;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .student-input {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      min-height: 100px;
+      overflow-y: auto;
+    }
+
+    .student-input:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>JavaScript Variables</h1>
-            <p>Understanding the basics of variable declaration, types, and scope in JavaScript.</p>
-        </header>
+  <h1>High School Physics Lesson</h1>
 
-        <section class="key-concepts">
-            <h2>Key Concepts and Definitions</h2>
-            <ul>
-                <li><strong>Variable:</strong> A symbol or container that stores data values.</li>
-                <li><strong>var:</strong> A keyword to declare a variable with function scope.</li>
-                <li><strong>let:</strong> A keyword to declare a variable with block scope.</li>
-                <li><strong>const:</strong> A keyword to declare a variable whose value cannot be changed.</li>
-            </ul>
-        </section>
-
-        <section class="core-questions">
-            <h2>Core Questions</h2>
-            <div>
-                <h3>Main Question: What are variables in JavaScript?</h3>
-                <p>Sub-question: How do different keywords affect variable scope and mutability?</p>
-            </div>
-        </section>
-
-        <section class="in-depth">
-            <h2>In-Depth Exploration</h2>
-            <p>Explore how <code>var</code>, <code>let</code>, and <code>const</code> behave in different contexts:</p>
-            <div>
-                <p><strong>Example:</strong> Demonstrate a variable declared with <code>var</code> inside a loop.</p>
-                <textarea rows="4" cols="50">for (var i = 0; i < 5; i++) { console.log(i); }</textarea>
-            </div>
-        </section>
-
-        <section class="practical-application">
-            <h2>Practical Applications</h2>
-            <p>Understanding the scope of variables can help prevent bugs related to variable hoisting and scope creep.</p>
-        </section>
-
-        <section class="review-summary">
-            <h2>Review and Summary</h2>
-            <p>Review key points about JavaScript variables and test your understanding with the following questions:</p>
-            <ul>
-                <li>What is the difference between <code>var</code> and <code>let</code>?</li>
-                <li>Can a variable declared with <code>const</code> be reassigned?</li>
-            </ul>
-        </section>
-
-        <footer>
-            <button onclick="printNotes()">Print Notes</button>
-        </footer>
+  <div class="section">
+    <h2 class="section-heading">Introduction to Newton's Laws of Motion</h2>
+    <div class="prefilled-content">
+      <p>
+        Sir Isaac Newton, the renowned English scientist and mathematician, formulated three fundamental principles that describe the relationship between the motion of objects and the forces acting upon them. These principles, known as Newton's Laws of Motion, provide a powerful framework for understanding and predicting the behavior of objects in the physical world.
+      </p>
+      <p>
+        By studying these laws, students will gain a deeper understanding of the underlying principles that govern the motion of objects, from the most everyday experiences to the complex phenomena observed in the universe. These laws not only explain the motion of objects but also enable us to make accurate predictions and solve a wide range of physics problems.
+      </p>
     </div>
-    <script >
-        function printNotes() {
-    window.print();
-}
-    </script>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Key Concepts and Questions</h2>
+    <div class="prefilled-content">
+      <p>
+        The three laws of motion proposed by Newton are:
+      </p>
+      <ol>
+        <li>
+          <strong>First Law (Law of Inertia):</strong> An object at rest will remain at rest, and an object in motion will remain in motion, unless acted upon by an unbalanced force.
+        </li>
+        <li>
+          <strong>Second Law (Law of Acceleration):</strong> The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.
+        </li>
+        <li>
+          <strong>Third Law (Law of Action and Reaction):</strong> For every action, there is an equal and opposite reaction.
+        </li>
+      </ol>
+      <p>
+        Some key questions to explore during this lesson include:
+      </p>
+      <ul>
+        <li>How do these laws explain the behavior of objects at rest and in motion?</li>
+        <li>What are the mathematical relationships between force, mass, and acceleration as described by Newton's Second Law?</li>
+        <li>What are some real-world examples that demonstrate the application of Newton's Laws of Motion?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Research Resources</h2>
+    <div class="prefilled-content">
+      <p>
+        To deepen your understanding of Newton's Laws of Motion and their applications, you can refer to the following resources:
+      </p>
+      <ul>
+        <li>Textbook: "Physics for High School Students" by John Smith</li>
+        <li>Online resource: <a href="www.physicswebsite.com/newtons-laws">www.physicswebsite.com/newtons-laws</a></li>
+        <li>Scientific article: "Understanding Newton's Laws of Motion" by Jane Johnson</li>
+        <li>Video tutorial: "Introduction to Newton's Laws" by Physics Academy</li>
+        <li>Additional research materials provided by your teacher</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Key Findings and Information</h2>
+    <div class="student-input" contenteditable="true" placeholder="Enter your key findings and information here..."></div>
+    <div class="guidance">
+      In this section, summarize the key information and findings you have learned about Newton's Laws of Motion. Highlight the main principles, mathematical relationships, and practical applications.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Reflection and Analysis</h2>
+    <div class="student-input" contenteditable="true" placeholder="Enter your reflection and analysis here..."></div>
+    <div class="guidance">
+      Reflect on your understanding of Newton's Laws of Motion. Analyze how these laws explain the motion of objects in various situations. Consider the implications and practical relevance of these laws in the real world.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Personal Insights and Thoughts</h2>
+    <div class="student-input" contenteditable="true" placeholder="Enter your personal insights and thoughts here..."></div>
+    <div class="guidance">
+      Share your personal insights and thoughts on the significance of Newton's Laws of Motion. Discuss any connections you have made between the concepts learned and your own experiences or observations.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Further Questions</h2>
+    <div class="student-input" contenteditable="true" placeholder="Enter your further questions here..."></div>
+    <div class="guidance">
+      List any additional questions or areas of curiosity that have arisen during your exploration of Newton's Laws of Motion. These could be topics you would like to investigate further or specific applications you would like to explore in more depth.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Action Steps</h2>
+    <div class="student-input" contenteditable="true" placeholder="Enter your action steps here..."></div>
+    <div class="guidance">
+      Based on your learning and reflections, outline the key action steps you plan to take to deepen your understanding of Newton's Laws of Motion. This could include follow-up research, experiments, problem-solving exercises, or any other strategies to apply and extend your knowledge.
+    </div>
+  </div>
 </body>
 </html>
