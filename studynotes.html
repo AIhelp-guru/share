@@ -126,7 +126,7 @@
             prompt = "Please review and give feedback :" + $(this).prev().text();
             var $temp = $('<input>');
              $("body").append($temp);
-             $temp.val(textToCopy).select();
+             $temp.val(prompt).select();
              document.execCommand("copy");
              $temp.remove();
         })
