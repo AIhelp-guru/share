@@ -89,7 +89,7 @@
             <li></li>
          </div>
         </code>
-        <button class="askai">Ask</button>
+        <button class="askai" prompt="Please review and give feedback :" >Ask</button>
          <div class="guidance"> In this section, summarize the key information and findings you have learned about Newton's Laws of Motion. Highlight the main principles, mathematical relationships, and practical applications. </div>
       </div>
       <div class="section">
@@ -123,7 +123,7 @@
 
       <script>
         $(".askai").click(function(){
-            prompt = "Please review and give feedback :" + $(this).prev().text();
+            prompt = $(this).attr("prompt")+ $(this).prev().text();
             var $temp = $('<input>');
              $("body").append($temp);
              $temp.val(prompt).select();
