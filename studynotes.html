@@ -39,6 +39,7 @@
          box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
          }
       </style>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
    </head>
    <body>
       <h1>High School Physics Lesson</h1>
@@ -88,6 +89,7 @@
             <li></li>
          </div>
         </code>
+        <button class="askai">Ask</button>
          <div class="guidance"> In this section, summarize the key information and findings you have learned about Newton's Laws of Motion. Highlight the main principles, mathematical relationships, and practical applications. </div>
       </div>
       <div class="section">
@@ -118,5 +120,21 @@
          </div>
          <div class="guidance"> Based on your learning and reflections, outline the key action steps you plan to take to deepen your understanding of Newton's Laws of Motion. This could include follow-up research, experiments, problem-solving exercises, or any other strategies to apply and extend your knowledge. </div>
       </div>
+
+      <script>
+        $(".askai").click(function(){
+            prompt = "Please review and give feedback :" + $(this).prev().text();
+            var $temp = $('<input>');
+             $("body").append($temp);
+             $temp.val(textToCopy).select();
+             document.execCommand("copy");
+             $temp.remove();
+        })
+
+
+
+      </script>
+
+
    </body>
 </html>
