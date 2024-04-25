@@ -21,6 +21,10 @@ body { font-family: Arial, sans-serif; margin: 20px; }
          color: #666;
          margin-top: 5px;
          }
+         .left-panel, .right-panel{
+            flex:1;
+            padding:10px;
+         }
          .student-input {
          border: 1px solid #ccc;
          border-radius: 4px;
