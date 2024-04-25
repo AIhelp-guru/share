@@ -48,19 +48,7 @@
       </div>
       
 
-      <script>
-        $(".askai").click(function(){
-            prompt = $(this).attr("prompt")+ $(this).prev().text();
-            var $temp = $('<input>');
-             $("body").append($temp);
-             $temp.val(prompt).select();
-             document.execCommand("copy");
-             $temp.remove();
-        })
-
-
-
-      </script>
+      <script src="askai.js"></script>
 
 
    </body>
