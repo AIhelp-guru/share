@@ -8,6 +8,7 @@
    </head>
    <body>
       <h1>High School Physics Lesson</h1>
+      <div class="left-panel">
       <div class="section">
          <h2 class="section-heading">Introduction to Newton's Laws of Motion</h2>
          <div class="prefilled-content">
@@ -52,6 +53,8 @@
             </ul>
          </div>
       </div>
+   </div>
+   <div class="right-panel">
       <div class="section">
         <code>
          <h2 class="section-heading">My notes</h2>
@@ -71,7 +74,7 @@
          <div class="guidance"> List any additional questions or areas of curiosity that have arisen during your exploration of Newton's Laws of Motion. These could be topics you would like to investigate further or specific applications you would like to explore in more depth. </div>
       </div>
       
-
+   </div>
       <script>
         $(".askai").click(function(){
             prompt = $(this).attr("prompt")+ $(this).prev().text();
