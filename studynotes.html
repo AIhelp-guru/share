@@ -2,44 +2,9 @@
 <html>
    <head>
       <title>High School Physics Lesson</title>
-      <style> body { font-family: Arial, sans-serif; margin: 20px; }
-         h1 {
-         text-align: center;
-         }
-         h2 {
-         margin-top: 20px;
-         }
-         .section {
-         margin-bottom: 30px;
-         }
-         .section-heading {
-         font-weight: bold;
-         margin-bottom: 10px;
-         }
-         .prefilled-content {
-         background-color: #f5f5f5;
-         padding: 10px;
-         }
-         .guidance {
-         font-style: italic;
-         color: #666;
-         margin-top: 5px;
-         }
-         .student-input {
-         border: 1px solid #ccc;
-         border-radius: 4px;
-         padding: 10px;
-         background-color: #f9f9f9;
-         min-height: 100px;
-         overflow-y: auto;
-         }
-         .student-input:focus {
-         outline: none;
-         border-color: #007bff;
-         box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-         }
-      </style>
+      <link rel="stylesheet" type="text/css" href="study.css">
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="askai.js"></script>
    </head>
    <body>
       <h1>High School Physics Lesson</h1>
@@ -89,7 +54,7 @@
       </div>
       <div class="section">
         <code>
-         <h2 class="section-heading">Key Findings and Information</h2>
+         <h2 class="section-heading">My notes</h2>
          <div class="student-input" contenteditable="true" placeholder="Enter your key findings and information here...">
             <li></li>
          </div>
@@ -97,20 +62,7 @@
         <button class="askai" prompt="Please review and give feedback :" >Ask</button>
          <div class="guidance"> In this section, summarize the key information and findings you have learned about Newton's Laws of Motion. Highlight the main principles, mathematical relationships, and practical applications. </div>
       </div>
-      <div class="section">
-         <h2 class="section-heading">Reflection and Analysis</h2>
-         <div class="student-input" contenteditable="true" placeholder="Enter your reflection and analysis here...">
-            <li></li>
-         </div>
-         <div class="guidance"> Reflect on your understanding of Newton's Laws of Motion. Analyze how these laws explain the motion of objects in various situations. Consider the implications and practical relevance of these laws in the real world. </div>
-      </div>
-      <div class="section">
-         <h2 class="section-heading">Personal Insights and Thoughts</h2>
-         <div class="student-input" contenteditable="true" placeholder="Enter your personal insights and thoughts here...">
-            <li></li>
-         </div>
-         <div class="guidance"> Share your personal insights and thoughts on the significance of Newton's Laws of Motion. Discuss any connections you have made between the concepts learned and your own experiences or observations. </div>
-      </div>
+      
       <div class="section">
          <h2 class="section-heading">Further Questions</h2>
          <div class="student-input" contenteditable="true" placeholder="Enter your further questions here...">
@@ -118,13 +70,7 @@
          </div>
          <div class="guidance"> List any additional questions or areas of curiosity that have arisen during your exploration of Newton's Laws of Motion. These could be topics you would like to investigate further or specific applications you would like to explore in more depth. </div>
       </div>
-      <div class="section">
-         <h2 class="section-heading">Action Steps</h2>
-         <div class="student-input" contenteditable="true" placeholder="Enter your action steps here...">
-            <li></li>
-         </div>
-         <div class="guidance"> Based on your learning and reflections, outline the key action steps you plan to take to deepen your understanding of Newton's Laws of Motion. This could include follow-up research, experiments, problem-solving exercises, or any other strategies to apply and extend your knowledge. </div>
-      </div>
+      
 
       <script>
         $(".askai").click(function(){
