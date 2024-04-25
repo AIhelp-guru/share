@@ -1,0 +1,36 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+         h1 {
+         text-align: center;
+         }
+         h2 {
+         margin-top: 20px;
+         }
+         .section {
+         margin-bottom: 30px;
+         }
+         .section-heading {
+         font-weight: bold;
+         margin-bottom: 10px;
+         }
+         .prefilled-content {
+         background-color: #f5f5f5;
+         padding: 10px;
+         }
+         .guidance {
+         font-style: italic;
+         color: #666;
+         margin-top: 5px;
+         }
+         .student-input {
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         padding: 10px;
+         background-color: #f9f9f9;
+         min-height: 100px;
+         overflow-y: auto;
+         }
+         .student-input:focus {
+         outline: none;
+         border-color: #007bff;
+         box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+         }
