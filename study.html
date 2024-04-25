@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html>
+   <head>
+      <title>High School Physics Lesson</title>
+      <style> 
+      </style>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+   </head>
+   <body>
+      <h1>High School Physics Lesson</h1>
+      <div class="section">
+         <h2 class="section-heading">Introduction to Newton's Laws of Motion</h2>
+         <div class="prefilled-content">
+          
+         </div>
+       </div>
+     
+      <div class="section">
+         <h2 class="section-heading">Key Concepts and Questions</h2>
+         <div class="prefilled-content">
+            
+         </div>
+      </div>
+      <div class="section">
+         <h2 class="section-heading">Research Resources</h2>
+         <div class="prefilled-content">
+           
+         </div>
+      </div>
+      <div class="section">
+        <code>
+         <h2 class="section-heading">My notes</h2>
+         <div class="student-input" contenteditable="true" placeholder="Enter your key findings and information here...">
+            <li></li>
+         </div>
+        </code>
+        <button class="askai" prompt="Please review and give feedback :" >Ask</button>
+         <div class="guidance"> In this section, summarize the key information and findings you have learned about Newton's Laws of Motion. Highlight the main principles, mathematical relationships, and practical applications. </div>
+      </div>
+      
+      <div class="section">
+         <h2 class="section-heading">Follow up questions</h2>
+         <div class="student-input" contenteditable="true" placeholder="Enter your further questions here...">
+            <li></li>
+         </div>
+
+         <button class="askai" prompt="Please review, provide answers and suggest other questions I can explore :" >Ask</button>
+         <div class="guidance"> List any additional questions or areas of curiosity that have arisen during your exploration of Newton's Laws of Motion. These could be topics you would like to investigate further or specific applications you would like to explore in more depth. </div>
+      </div>
+      
+
+      <script>
+        $(".askai").click(function(){
+            prompt = $(this).attr("prompt")+ $(this).prev().text();
+            var $temp = $('<input>');
+             $("body").append($temp);
+             $temp.val(prompt).select();
+             document.execCommand("copy");
+             $temp.remove();
+        })
+
+
+
+      </script>
+
+
+   </body>
+</html>
