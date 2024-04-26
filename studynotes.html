@@ -9,7 +9,7 @@
    <body>
       <h1 id="topic">High School Physics Lesson</h1>
       <div class="menu">
-      <select id="subjects"></select>
+      
       </div>
       <div class="left-panel">
       <div class="section">
@@ -72,7 +72,8 @@
       $.get("https://script.google.com/macros/s/AKfycbzxpRdzWBDqR5487v6Ex_VomXkQ-FN756O11MUyuJwADVAn5NF2EZ4vP8kQX5QA4Pi9lw/exec",function(data){
          sdata = data;
 
-         addsubjects();
+         menu = addsubjects();
+         $(".menu").html(menu);
 
          load(4);
   
