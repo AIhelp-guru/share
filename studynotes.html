@@ -57,6 +57,7 @@
       
    </div>
       <script>
+         var sdata;
         $(".askai").click(function(){
             prompt = $(this).attr("prompt")+ $(this).prev().text();
             var $temp = $('<input>');
@@ -66,16 +67,17 @@
              $temp.remove();
         })
       $.get("https://script.google.com/macros/s/AKfycbxe11tXjjfLGw1o-wxKAtiiJoApHuf0LOt6_mYo1QcJLA6uagY22qM_zen5Vdon9Cd8kA/exec",function(data){
-
-      //sdata = JSON.parse(trim(data));
-      console.log(data[0]);
-      $("#intro").html(data[3][3]);
-      $("#topic").html(data[3][0]+"-"+data[3][1]+":"+data[3][2]);
-      $("#key_concepts").html(data[3][4]);
-      $("#qs").html(data[3][5]);
+      sdata = data;
+      load(4);
+  
       });
 
-
+      function load(id){
+         $("#intro").html(sdata[3][3]);
+      $("#topic").html(data[3][0]+"-"+sdata[3][1]+":"+sdata[3][2]);
+      $("#key_concepts").html(sdata[3][4]);
+      $("#qs").html(sdata[3][5]);
+      }
       </script>
 
 
