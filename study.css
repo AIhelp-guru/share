@@ -38,8 +38,18 @@ body { font-family: Arial, sans-serif; margin: 20px; }
          .left-panel, .right-panel{
             flex:1;
             padding:10px;
-            width:45%;
+            width:40%;
             float:left;
             overflow:auto;
+            
+         }
+         .menu{
+            flex:1;
+            padding:10px;
+            width:15%;
+            float:left;
+            overflow:auto;
+            background-color: #666;
+            color:white;
             
          }
