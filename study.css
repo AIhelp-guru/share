@@ -51,5 +51,7 @@ body { font-family: Arial, sans-serif; margin: 20px; }
             overflow:auto;
             background-color: #666;
             color:white;
-            
+            height: calc(100vh* 90 / 100);
+            position: fixed;
+            left: 0px;
          }

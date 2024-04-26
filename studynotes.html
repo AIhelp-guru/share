@@ -85,7 +85,7 @@
          $("#qs").html(((sdata[id][5]).split("?")).join(" ? <br>"));
          $("#research").html(sdata[id][6])
       }
-
+    /**
       function  addsubjects(){
          for(i=0;i<sdata.length;i++){
             $("#subjects").append("<option value='"+i+"'>"+sdata[i][0]+" - "+sdata[i][1] + " : " + sdata[i][2] +"</option>");
@@ -93,6 +93,37 @@
          $("#subjects").change(function(){
             load($(this).val());
          })
+      } **/
+      function addsubjects() {
+            data = sdata;
+            // Create a map to group elements by the 1st and 2nd elements
+            const groups = new Map();
+            data.forEach(([group1, group2, item]) => {
+               if (!groups.has(group1)) {
+                  groups.set(group1, new Map());
+               }
+               if (!groups.get(group1).has(group2)) {
+                  groups.get(group1).set(group2, []);
+               }
+               groups.get(group1).get(group2).push(item);
+            });
+
+            // Create the HTML menu structure
+            let menuHtml = '<ul>';
+            groups.forEach((group2Map, group1) => {
+               menuHtml += `<li>${group1}<ul>`;
+               group2Map.forEach((items, group2) => {
+                  menuHtml += `<li>${group2}<ul>`;
+                  items.forEach((item) => {
+                  menuHtml += `<li>${item}</li>`;
+                  });
+                  menuHtml += '</ul></li>';
+               });
+               menuHtml += '</ul></li>';
+            });
+            menuHtml += '</ul>';
+
+            return menuHtml;
       }
       </script>
 
