@@ -41,7 +41,7 @@ body { font-family: Arial, sans-serif; margin: 20px; }
          .left-panel, .right-panel{
             flex:1;
             padding:10px;
-            width:60%;
+            
             float:left;
             overflow:auto;
 
@@ -51,6 +51,12 @@ body { font-family: Arial, sans-serif; margin: 20px; }
             
             background-color: rgb(250, 246, 178);
             width:30%;
+            
+         }
+         .right-panel{
+            
+            background-color: rgb(255, 230, 146);
+            width:60%;
             
          }
          .menu{
@@ -64,6 +70,7 @@ body { font-family: Arial, sans-serif; margin: 20px; }
             height: calc(100vh* 80 / 100);
             position: fixed;
             left: 0px;
+            z-index: 999;
          }
          .menu-item{
             background: none;
