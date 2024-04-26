@@ -112,9 +112,9 @@
             // Create the HTML menu structure
             let menuHtml = '<ul>';
             groups.forEach((group2Map, group1) => {
-               menuHtml += `<li>${group1}<ul>`;
+               menuHtml += `<h2>${group2}</h2>`;
                group2Map.forEach((items, group2) => {
-                  menuHtml += `<li>${group2}<ul>`;
+                 
                   items.forEach((item) => {
                   menuHtml += `<li>${item}</li>`;
                   });
