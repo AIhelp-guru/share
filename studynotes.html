@@ -12,45 +12,26 @@
       <div class="section">
          <h2 class="section-heading">Introduction to Newton's Laws of Motion</h2>
          <div class="prefilled-content" id="intro">
-           <p>
-             Sir Isaac Newton, the renowned English scientist and mathematician, formulated three fundamental principles that describe the relationship between the motion of objects and the forces acting upon them. These principles, known as Newton's Laws of Motion, provide a powerful framework for understanding and predicting the behavior of objects in the physical world.
-           </p>
-           <p>
-             By studying these laws, students will gain a deeper understanding of the underlying principles that govern the motion of objects, from the most everyday experiences to the complex phenomena observed in the universe. These laws not only explain the motion of objects but also enable us to make accurate predictions and solve a wide range of physics problems.
-           </p>
+      
          </div>
        </div>
      
       <div class="section">
-         <h2 class="section-heading">Key Concepts and Questions</h2>
-         <div class="prefilled-content" id="keyqs">
-            <p> The three laws of motion proposed by Newton are: </p>
-            <ol>
-               <li> <strong>First Law (Law of Inertia):</strong> An object at rest will remain at rest, and an object in motion will remain in motion, unless acted upon by an unbalanced force. </li>
-               <li> <strong>Second Law (Law of Acceleration):</strong> The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass. </li>
-               <li>
-                  <strong>Third Law (Law of Action and Reaction):</strong> For every action, there is an equal and opposite reaction. 
-               </li>
-            </ol>
-            <p> Some key questions to explore during this lesson include: </p>
-            <ul>
-               <li>How do these laws explain the behavior of objects at rest and in motion?</li>
-               <li>What are the mathematical relationships between force, mass, and acceleration as described by Newton's Second Law?</li>
-               <li>What are some real-world examples that demonstrate the application of Newton's Laws of Motion?</li>
-            </ul>
+         <h2 class="section-heading">Key Concepts </h2>
+         <div class="prefilled-content" id="key_concepts">
+         
          </div>
       </div>
       <div class="section">
+         <h2 class="section-heading">Questions</h2>
+         <div class="prefilled-content" id="qs">
+         </div>
+      </div>
+
+      <div class="section">
          <h2 class="section-heading">Research Resources</h2>
          <div class="prefilled-content">
-            <p> To deepen your understanding of Newton's Laws of Motion and their applications, you can refer to the following resources: </p>
-            <ul>
-               <li>Textbook: "Fundamentals of Physics" by David Halliday, Robert Resnick, and Jearl Walker</li>
-               <li>Online resource: <a href="https://www.khanacademy.org/science/physics/forces-and-newtons-laws">Khan Academy: Forces and Newton's Laws</a></li>
-               <li>Scientific article: "Newton's Laws of Motion: A Comprehensive Review" by John Doe, published in the Journal of Physics Education</li>
-               <li>Video tutorial: "Understanding Newton's Laws of Motion" by The Physics Classroom</li>
-               <li>Additional research materials provided by your teacher</li>
-            </ul>
+         
          </div>
       </div>
    </div>
@@ -90,7 +71,8 @@
       console.log(data[0]);
       $("#intro").html(data[3][3]);
       $("#topic").html(data[3][0]+"-"+data[3][1]+":"+data[3][2]);
-      $("#keyqs").html(data[3][4]);
+      $("#key_concepts").html(data[3][4]);
+      $("#qs").html(data[3][5]);
       });
 
 
