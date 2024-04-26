@@ -86,7 +86,8 @@
         })
       $.get("https://script.google.com/macros/s/AKfycbxe11tXjjfLGw1o-wxKAtiiJoApHuf0LOt6_mYo1QcJLA6uagY22qM_zen5Vdon9Cd8kA/exec",function(data){
 
-      sdata = JSON.parse(data);
+      sdata = JSON.parse(trim(data));
+      console.log(sdata);
       $("#intro").html(sdata[3][3]);
       });
 
