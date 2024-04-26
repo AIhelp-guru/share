@@ -30,7 +30,7 @@ body { font-family: Arial, sans-serif; margin: 20px; }
          border-radius: 4px;
          padding: 10px;
          background-color: #f9f9f9;
-         min-height: 100px;
+         height: 200px;
          overflow-y: auto;
          }
          .student-input:focus {
