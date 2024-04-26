@@ -11,7 +11,7 @@
       <div class="left-panel">
       <div class="section">
          <h2 class="section-heading">Introduction to Newton's Laws of Motion</h2>
-         <div class="prefilled-content">
+         <div class="prefilled-content" id="intro">
            <p>
              Sir Isaac Newton, the renowned English scientist and mathematician, formulated three fundamental principles that describe the relationship between the motion of objects and the forces acting upon them. These principles, known as Newton's Laws of Motion, provide a powerful framework for understanding and predicting the behavior of objects in the physical world.
            </p>
@@ -86,7 +86,8 @@
         })
       $.get("https://script.google.com/macros/s/AKfycbxe11tXjjfLGw1o-wxKAtiiJoApHuf0LOt6_mYo1QcJLA6uagY22qM_zen5Vdon9Cd8kA/exec",function(data){
 
-      console.log(data)
+      sdata = JSON.parse(data);
+      $("#intro").html(sdata[3][3]);
       });
 
 
