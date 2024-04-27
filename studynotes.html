@@ -149,7 +149,7 @@
       studentInputs.forEach(function(studentInput) {
       studentInput.addEventListener("input", function() {
          if (studentInput.textContent.trim() === "") {
-            studentInput.textContent = "Enter your text here";
+            studentInput.textContent = "<li>Enter your text here</li>";
             studentInput.classList.add("placeholder");
          } else {
             studentInput.classList.remove("placeholder");
@@ -164,11 +164,15 @@
 
       studentInput.addEventListener("blur", function() {
          if (studentInput.textContent.trim() === "") {
-            studentInput.textContent = "Enter your text here";
+            studentInput.textContent = "<li>Enter your text here</li>";
             studentInput.classList.add("placeholder");
          }
       });
       });
+      if (studentInput.textContent.trim() === "") {
+            studentInput.textContent = "<li>Enter your text here</li>";
+            studentInput.classList.add("placeholder");
+         }
       </script>
 
 
