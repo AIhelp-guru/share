@@ -15,7 +15,8 @@ body { font-family: Arial, sans-serif; margin: 20px; }
             color: white;
          }
          #topic{
-            color:gray;
+            font-size: larger;
+            text-align: center;
          }
          .section {
          margin-bottom: 30px;
