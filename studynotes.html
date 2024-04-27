@@ -99,7 +99,7 @@
       function load(id){
          $("#intro").html("Main question :"+ sdata[id][3]);
          $("#topic").html(sdata[id][0]+"-"+sdata[id][1]+":"+sdata[3][2]);
-         $("#key_concepts").html(sdata[id][4]);
+         $("#key_concepts").html(convertKeyConceptsToNumberedHtml(sdata[id][4]));
          $("#qs").html(((sdata[id][5]).split("?")).join(" ? <br>"));
          $("#research").html(sdata[id][6])
       }
@@ -142,7 +142,19 @@
             
             return menuHtml;
       }
+      function convertKeyConceptsToNumberedHtml(keyConceptsText) {
+         // Split the text into individual key concepts
+         const keyConcepts = keyConceptsText.split("\n\n");
 
+         // Create an HTML string with numbered list items
+         let html = "<ol>";
+         keyConcepts.forEach((keyConcept, index) => {
+            html += `<li>${index + 1}. ${keyConcept}</li>`;
+         });
+         html += "</ol>";
+
+      return html;
+      }
 
      
       </script>
