@@ -66,13 +66,13 @@ body { font-family: Arial, sans-serif; margin: 20px; }
          .left-panel{
             
             background-color: rgb(250, 246, 178);
-            width:30%;
+            width:600px;
             
          }
          .right-panel{
             
             background-color: rgb(255, 230, 146);
-            width:60%;
+            width:calc(vw*100 -600);
             
          }
          .menu{
