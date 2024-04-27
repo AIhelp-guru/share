@@ -99,9 +99,10 @@
       function load(id){
          $("#intro").html("Main question :"+ sdata[id][3]);
          $("#topic").html(sdata[id][0]+"-"+sdata[id][1]+":"+sdata[3][2]);
-         $("#key_concepts").html(convertKeyConceptsToNumberedHtml(sdata[id][4]));
+         $("#key_concepts").html(sdata[id][4]);
          $("#qs").html(((sdata[id][5]).split("?")).join(" ? <br>"));
-         $("#research").html(sdata[id][6])
+         $("#research").html(sdata[id][6]);
+         $("#key_concepts").html(convertKeyConceptsToNumberedHtml($("#key_concepts").text());
       }
     /**
       function  addsubjects(){
