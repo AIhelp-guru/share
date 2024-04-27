@@ -144,29 +144,31 @@
       }
 
 
-      const myDiv = document.getElementsByClassName("student-input");
+      const studentInputs = document.querySelectorAll(".student-input");
 
-         myDiv.addEventListener("input", function() {
-         if (myDiv.textContent.trim() === "") {
-            myDiv.textContent = "Enter your text here";
-            myDiv.classList.add("placeholder");
+      studentInputs.forEach(function(studentInput) {
+      studentInput.addEventListener("input", function() {
+         if (studentInput.textContent.trim() === "") {
+            studentInput.textContent = "Enter your text here";
+            studentInput.classList.add("placeholder");
          } else {
-            myDiv.classList.remove("placeholder");
+            studentInput.classList.remove("placeholder");
          }
-         });
+      });
 
-         myDiv.addEventListener("focus", function() {
-         if (myDiv.classList.contains("placeholder")) {
-            myDiv.textContent = "";
+      studentInput.addEventListener("focus", function() {
+         if (studentInput.classList.contains("placeholder")) {
+            studentInput.textContent = "";
          }
-         });
+      });
 
-         myDiv.addEventListener("blur", function() {
-         if (myDiv.textContent.trim() === "") {
-            myDiv.textContent = "Enter your text here";
-            myDiv.classList.add("placeholder");
+      studentInput.addEventListener("blur", function() {
+         if (studentInput.textContent.trim() === "") {
+            studentInput.textContent = "Enter your text here";
+            studentInput.classList.add("placeholder");
          }
-         });
+      });
+      });
       </script>
 
 
