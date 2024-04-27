@@ -142,6 +142,31 @@
             
             return menuHtml;
       }
+
+
+      const myDiv = document.getElementsByClassName("student-input");
+
+         myDiv.addEventListener("input", function() {
+         if (myDiv.textContent.trim() === "") {
+            myDiv.textContent = "Enter your text here";
+            myDiv.classList.add("placeholder");
+         } else {
+            myDiv.classList.remove("placeholder");
+         }
+         });
+
+         myDiv.addEventListener("focus", function() {
+         if (myDiv.classList.contains("placeholder")) {
+            myDiv.textContent = "";
+         }
+         });
+
+         myDiv.addEventListener("blur", function() {
+         if (myDiv.textContent.trim() === "") {
+            myDiv.textContent = "Enter your text here";
+            myDiv.classList.add("placeholder");
+         }
+         });
       </script>
 
 
