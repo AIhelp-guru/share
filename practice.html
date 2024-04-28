@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SAT Math Linear Equations Quiz</title>
+  <style>
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .answer-options {
+      margin-left: 20px;
+    }
+    .answer-options label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    #result {
+      margin-top: 20px;
+    }
+    .answer{
+        color:gray;
+        display:none;
+        padding: 10px;
+        border: 1px solid;
+    }
+  </style>
+  <script src ="https://code.jquery.com/jquery-3.7.1.slim.min.js" ></script>
+</head>
+<body>
+  <h1>SAT Math Linear Equations Practice Quiz</h1>
+  <button type="button" onclick="evaluateQuiz()">Evaluate Answers</button>
+  <div id="result"></div>
+  <div id="quizContainer"></div>
+
+<script src="quiz.js"></script>
+  <script>
+  
+    // Function to generate quiz questions dynamically
+    function generateQuiz() {
+  var quizContainer = $("#quizContainer");
+  quizContainer.empty();
+
+  for (var i = 0; i < quizData.length; i++) {
+    var question = quizData[i];
+    var questionRow = $("<tr></tr>");
+    questionRow.append("<td style='width:45%;font-weight:bold'>" + (i + 1) + ". " + question.question + "</td>");
+
+    var answerOptions = $("<div class='answer-options'></div>");
+    for (var j = 0; j < question.options.length; j++) {
+      var option = question.options[j];
+      var optionElement = $("<label><input type='radio' name='q" + (i + 1) + "' value='" + option.charAt(0) + "'>" + option + "</label>");
+      answerOptions.append(optionElement);
+    }
+    questionRow.append(answerOptions);
+
+    var answerRow = $("<tr></tr>");
+    answerRow.append("<td></td><td><div class='answer'>" + question.answer + ": " + question.explanation + "</div></td>");
+    quizContainer.append(questionRow, answerRow);
+  }
+}
+    // Function to evaluate quiz answers
+    function evaluateQuiz() {
+      var score = 0;
+      var explanations = [];
+
+      for (var i = 0; i < quizData.length; i++) {
+        var question = quizData[i];
+        var answer = document.querySelector('input[name="q' + (i + 1) + '"]:checked').value;
+        if (answer === question.answer) {
+          score++;
+          $(".answer").eq(i).prepend("Correct : ");
+        }else{
+            $(".answer").eq(i).prepend("Wrong : ");
+            $(".answer").eq(i).css("color","red");
+        }
+        explanations.push((i + 1) + ". " + question.answer + ":" +question.explanation);
+      }
+
+      // Display score and explanations
+      var resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "<h2>Quiz Result</h2>";
+      resultDiv.innerHTML += "<p>Score: " + score + " out of " + quizData.length + "</p>";
+      //resultDiv.innerHTML += "<h3>Explanations:</h3>";
+      //resultDiv.innerHTML += "<ol>";
+      //explanations.forEach(function(explanation) {
+        //resultDiv.innerHTML += "<li>" + explanation + "</li>";
+      //});
+      //resultDiv.innerHTML += "</ol>";
+      $(".answer").show();
+    }
+
+    // Generate the quiz questions when the page loads
+    generateQuiz();
+  </script>
+</body>
+</html>
