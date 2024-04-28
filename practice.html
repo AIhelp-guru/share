@@ -2,31 +2,102 @@
 <html>
 <head>
   <title>SAT Math Linear Equations Quiz</title>
-  <style>
-    label {
-      display: block;
-      margin-bottom: 10px;
-    }
-    .answer-options {
-      margin-left: 20px;
-    }
-    .answer-options label {
-      display: inline-block;
-      margin-right: 10px;
-    }
-    #result {
-      margin-top: 20px;
-    }
-    .answer{
-        color:gray;
-        display:none;
-        padding: 10px;
-        border: 1px solid;
-    }
-    tr{
-      margin:10px;
-    }
-  </style>
+  /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+button {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Answer Options Styles */
+.answer-options {
+  margin-left: 20px;
+}
+
+.answer-options label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Answer Styles */
+.answer {
+  color: gray;
+  display: none;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  margin-top: 10px;
+}
+
+.answer.correct {
+  color: green;
+}
+
+.answer.wrong {
+  color: red;
+}
+
+/* Result Styles */
+#result {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#result h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#result p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
   <script src ="https://code.jquery.com/jquery-3.7.1.slim.min.js" ></script>
 </head>
 <body>
